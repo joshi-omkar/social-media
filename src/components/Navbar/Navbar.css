@@ -1,0 +1,26 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    height: 64px; 
+    background-color: #002945;
+    margin: 12px;
+    border-radius: 12px;
+}
+
+.searchbar-container>span{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 1.25rem;
+}
+
+.searchbar-input{
+    width: 518px;
+    font-size: 16px;
+    line-height: 18px;
+    border: none;
+    margin-left: 3px;
+}
