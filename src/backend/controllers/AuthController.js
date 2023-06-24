@@ -15,10 +15,12 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { username, password, ...rest } = JSON.parse(request.requestBody);
+  const { firstName, lastName, email, password } = JSON.parse(request.requestBody);
+  console.log(request)
+  console.log(process.env.REACT_APP_JWT_SECRET)
   try {
     // check if username already exists
-    const foundUser = schema.users.findBy({ username: username });
+    const foundUser = schema.users.findBy({ email: email });
     if (foundUser) {
       return new Response(
         422,
@@ -34,18 +36,20 @@ export const signupHandler = function (schema, request) {
       _id,
       createdAt: formatDate(),
       updatedAt: formatDate(),
-      username,
+      firstName,
+      lastName,
+      email,
       password,
-      ...rest,
       followers: [],
       following: [],
       bookmarks: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
-      { _id, username },
+      { _id, firstName, lastName, email },
       process.env.REACT_APP_JWT_SECRET
     );
+    
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(
@@ -65,9 +69,9 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
-  const { username, password } = JSON.parse(request.requestBody);
+  const { email, password } = JSON.parse(request.requestBody);
   try {
-    const foundUser = schema.users.findBy({ username: username });
+    const foundUser = schema.users.findBy({ email: email });
     if (!foundUser) {
       return new Response(
         404,
@@ -81,7 +85,7 @@ export const loginHandler = function (schema, request) {
     }
     if (password === foundUser.password) {
       const encodedToken = sign(
-        { _id: foundUser._id, username },
+        { _id: foundUser._id, email },
         process.env.REACT_APP_JWT_SECRET
       );
       return new Response(200, {}, { foundUser, encodedToken });
