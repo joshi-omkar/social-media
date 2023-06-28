@@ -17,7 +17,6 @@ const Login = () => {
 
   const handleOnLogIn = (e) => {
     e.preventDefault();
-    e.preventDefault();
     const data = {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -57,7 +56,7 @@ const Login = () => {
       <h2>Log In</h2>
       <div className="signup-form">
         <div>
-          <lable>Email</lable>
+          <label>Email</label>
           <input
             type="text"
             value={user.email}
@@ -68,7 +67,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <lable>Password</lable>
+          <label>Password</label>
           <input
             type="password"
             placeholder="Password"

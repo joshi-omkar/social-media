@@ -5,6 +5,7 @@ import { registerUser } from "../../features/auth/authAction";
 import Loader from "../../assets/loader";
 import { verifyEmail, verifyLength, verifyName } from "../../utils/Helper";
 import { Link, useNavigate } from "react-router-dom";
+import { CloseEye, OpenEye } from "../../assets/Eyes";
 
 const Signup = () => {
   const { loading, userInfo, userToken, error, success } = useSelector(
@@ -19,6 +20,7 @@ const Signup = () => {
     reEnterPassword: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleOnSignUp = (e) => {
@@ -61,8 +63,8 @@ const Signup = () => {
     <div className="signup-container">
       <h2>Sign Up</h2>
       <div className="signup-form">
-        <div>
-          <lable>Email</lable>
+        <div style={{ marginTop: "12px" }}>
+          <label>Email</label>
           <input
             type="text"
             value={user.email}
@@ -72,8 +74,8 @@ const Signup = () => {
             placeholder="sample@abc.com"
           />
         </div>
-        <div>
-          <lable>First Name</lable>
+        <div style={{ marginTop: "12px" }}>
+          <label>First Name</label>
           <input
             type="text"
             placeholder="John"
@@ -83,8 +85,8 @@ const Signup = () => {
             }}
           />
         </div>
-        <div>
-          <lable>Last Name</lable>
+        <div style={{ marginTop: "12px" }}>
+          <label>Last Name</label>
           <input
             type="text"
             placeholder="Maxwell"
@@ -94,27 +96,37 @@ const Signup = () => {
             }}
           />
         </div>
-        <div>
-          <lable>Password</lable>
-          <input
-            type="password"
-            placeholder="Password"
-            value={user.password}
-            onChange={(e) => {
-              setUser({ ...user, password: e.target.value });
-            }}
-          />
-        </div>
-        <div>
-          <lable>Re-enter Password</lable>
-          <input
-            type="password"
-            placeholder="Re-enter Password"
-            value={user.reEnterPassword}
-            onChange={(e) => {
-              setUser({ ...user, reEnterPassword: e.target.value });
-            }}
-          />
+        <div style={{ marginTop: "12px" }}>
+          <label>Password</label>
+          <span style={{ display: "flex" }}>
+            <div>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={user.password}
+                onChange={(e) => {
+                  setUser({ ...user, password: e.target.value });
+                }}
+                style={{ width: "460px", borderTop: 'none', borderBottom: 'none', borderLeft: 'none', borderRight: "none" }}
+              />
+            </div>
+            <div
+              style={{
+                backgroundColor: "#fff",
+                marginTop: "2px",
+                display: "flex",
+                width: '40px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+                borderRadius: "0px 2px 2px 0px"
+                
+              }}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <CloseEye /> : <OpenEye />}
+            </div>
+          </span>
         </div>
 
         <p style={{ color: "rgb(236, 23, 23)" }}>{errorMsg}</p>
