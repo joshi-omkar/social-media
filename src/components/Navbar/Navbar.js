@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { handleLogout } from '../../features/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import SearchBar from './SearchBar';
 
@@ -20,11 +20,14 @@ const NavBar = () => {
         <div className='logo'>
             NeoG 
         </div>
-        <div>
+        <div style={{width: "30%"}}>
           <SearchBar/>
         </div>
-        <div>
-            <button onClick={handleOnLogout}>Logout</button>
+        <div className='logout-button'>
+          <select>
+            <option><Link to={'/profile'}>Profile</Link></option>
+            <option onClick={handleOnLogout}>Logout</option>
+          </select>
         </div>
     </div>
   )

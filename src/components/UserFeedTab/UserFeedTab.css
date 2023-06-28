@@ -1,0 +1,52 @@
+.userfeed-tab{
+    width: 60%;
+    height: 100px;
+    background-color: #002945;
+    padding: 15px;
+    margin: 12px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.userfeed-tab >button{
+    width: 20%;
+    padding: 8px;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #ABC4FF;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.userfeed-tab-new{
+    background-color: transparent;
+}
+
+.userfeed-tab-new:hover{
+    background-color: #001d30;
+}
+
+.userfeed-tab-trending{
+    background-color: #C1335E;
+}
+
+.userfeed-tab-trending:hover{
+    background-color: #A12B4E;
+}
+
+@media screen and (max-width: 720px) {
+    .userfeed-tab{
+        width: 96%;
+    }
+    .userfeed-tab >button{
+        width: 40%;
+        padding: 8px;
+        font-size: 16px;
+        color: #fff;
+        border: 1px solid #ABC4FF;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
