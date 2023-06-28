@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    height: 64px; 
+    background-color: #002945;
+    margin: 12px;
+    border-radius: 4px;
+}
+
+.searchbar-container>span{
+    display: flex;
+    align-items: center;
+    background-color: #00111C;
+    color: #e5e5e5;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.searchbar-input{
+    width: 100%;
+    font-size: 16px;
+    line-height: 18px;
+    border: none;
+    margin-left: 4px;
+    background-color: #00111C;
+    color: #e5e5e5;
+}
+
+.logout-button{
+    display: flex;
+    justify-content: center;
+}
+
+.logout-button > button{
+    
+}
