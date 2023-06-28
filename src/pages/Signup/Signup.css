@@ -31,7 +31,7 @@
 .signup-form input{
     width: 500px;
     padding: 8px;
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
     margin-top: 2px;
     font-size: 0.9rem;
 }
