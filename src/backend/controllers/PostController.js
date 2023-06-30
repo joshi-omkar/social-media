@@ -65,6 +65,7 @@ export const getAllUserPostsHandler = function (schema, request) {
 
 export const createPostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log(user)
   try {
     if (!user) {
       return new Response(
@@ -124,8 +125,9 @@ export const editPostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
+    console.log(postData)
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.username !== user.username) {
+    if (post.email !== user.email) {
       return new Response(
         400,
         {},

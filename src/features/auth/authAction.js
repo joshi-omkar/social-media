@@ -18,8 +18,8 @@ export const registerUser = createAsyncThunk(
       )
       return response.data
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0])
       } else {
         return rejectWithValue(error.message)
       }
@@ -43,8 +43,8 @@ export const loginUser = createAsyncThunk(
       )
       return response.data
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0])
       } else {
         return rejectWithValue(error.message)
       }

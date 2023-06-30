@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, registerUser } from "./authAction";
+import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
   loading: false,
-  userInfo: JSON.parse(localStorage.getItem("user")) ?? null,
-  userToken: localStorage.getItem("token") ?? null,
+  userInfo: JSON.parse(localStorage.getItem("user")),
+  userToken: localStorage.getItem("token"),
   error: null,
   success: false,
 };
+
+console.log(initialState.userInfo, initialState.userToken);
 
 const authSlice = createSlice({
   name: "auth",
@@ -30,10 +33,12 @@ const authSlice = createSlice({
       state.success = true;
       state.userInfo = payload;
       state.userToken = payload.encodedToken;
+      TostMessage("Succesfully Created Account!", "success");
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
+      TostMessage(payload, "error");
     },
     //Login User
     [loginUser.pending]: (state) => {
@@ -45,10 +50,14 @@ const authSlice = createSlice({
       state.success = true;
       state.userInfo = payload;
       state.userToken = payload.encodedToken;
+      state.error = null;
+      TostMessage("Successfully LogedIn!", "success");
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
+      state.success = false;
+      TostMessage(payload, "error");
     },
   },
 });

@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import NavBar from "./components/Navbar/Navbar";
 import Feed from "./pages/Feed/Feed";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
@@ -25,6 +27,7 @@ const App = () => {
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/login" exact element={<Login />} />
       </Routes>
+      <ToastContainer style={{ fontWeight: "500", fontSize: "1rem" }} />
     </div>
   );
 };
