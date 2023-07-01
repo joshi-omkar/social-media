@@ -128,3 +128,28 @@ export const likePost = createAsyncThunk(
   }
 );
 
+export const disLikePost = createAsyncThunk(
+  "api/disLikePost",
+  async (postData, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.post(
+        `${POSTURL.Dislike}/${postData.postId}`,
+        {},
+        config
+      );
+      return response.data.posts;
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0]);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

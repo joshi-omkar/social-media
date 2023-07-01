@@ -8,5 +8,6 @@ export const POSTURL = {
     GetAllPosts: '/api/posts',
     Edit: '/api/posts/edit',
     Delete: '/api/posts',
-    Like: "/api/posts/like"
+    Like: "/api/posts/like",
+    Dislike: "/api/posts/dislike",
 }

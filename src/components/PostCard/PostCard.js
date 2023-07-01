@@ -8,11 +8,7 @@ import DownArrow from "../../assets/DownArrow";
 import ShareSVG from "../../assets/ShareSVG";
 import SettingSVG from "../../assets/SettingSVG";
 import { useEffect, useRef, useState } from "react";
-import {
-  deletePost,
-  editPost,
-  likePost,
-} from "../../features/Feed/FeedAction";
+import { deletePost, disLikePost, editPost, likePost } from "../../features/Feed/FeedAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const SettingDropdown = ({
@@ -64,7 +60,8 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
@@ -139,22 +136,32 @@ export const Card = ({ data }) => {
           <div className="right-side">
             <div style={{ cursor: "pointer" }}>
               <UpArrow
+                fill={isLiked ? "#ff2f56" : "#fff"}
                 onClick={(e) => {
                   e.preventDefault();
+
                   const postData = {
                     postId: data._id,
                   };
                   dispatch(likePost(postData));
+                  setIsLiked(true);
                 }}
               />
             </div>
             <label style={{ marginLeft: "4px", marginBottom: "2px" }}>
-              {data.likes.likedBy.length}
+              {data.likes.likeCount}
             </label>
             <div style={{ cursor: "pointer" }}>
               <DownArrow
-                onClick={() => {
-                  setCount(count - 1);
+                fill={isLiked ? "#492fff" : "#fff"}
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  const postData = {
+                    postId: data._id,
+                  };
+                  dispatch(disLikePost(postData));
+                  setIsDisliked(true);
                 }}
               />
             </div>

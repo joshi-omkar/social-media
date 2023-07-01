@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { addPost, deletePost, editPost, getAllPosts, likePost } from "./FeedAction";
+import { addPost, deletePost, disLikePost, editPost, getAllPosts, likePost } from "./FeedAction";
 import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
@@ -103,9 +103,6 @@ const feedSlice = createSlice({
     });
     //like post
     builder.addCase(likePost.pending, (state) => {
-      // state.loading = true;
-      // state.error = null;
-      // state.success = false;
     });
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       state.allPosts = payload;
@@ -115,6 +112,22 @@ const feedSlice = createSlice({
       TostMessage("Post Liked!", "success");
     });
     builder.addCase(likePost.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.error = payload;
+      TostMessage(payload, "error");
+    });
+    //dislike post
+    builder.addCase(disLikePost.pending, (state) => {
+    });
+    builder.addCase(disLikePost.fulfilled, (state, { payload }) => {
+      state.allPosts = payload;
+      state.loading = false;
+      state.success = true;
+      state.error = null;
+      TostMessage("Post Disliked!", "success");
+    });
+    builder.addCase(disLikePost.rejected, (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.error = payload;
