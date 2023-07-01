@@ -62,7 +62,6 @@ export const editPost = createAsyncThunk(
 export const deletePost = createAsyncThunk(
   "api/deletePost",
   async (postData, { rejectWithValue }) => {
-    console.log(postData)
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -72,6 +71,32 @@ export const deletePost = createAsyncThunk(
       };
       const response = await axios.delete(
         `${POSTURL.Delete}/${postData.postId}`,
+        config
+      );
+      return response.data.posts;
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0]);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const likePost = createAsyncThunk(
+  "api/likePost",
+  async (postData, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.post(
+        `${POSTURL.Like}/${postData.postId}`,
+        {},
         config
       );
       return response.data.posts;

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../features/newPostSlice/newPostAction";
 
 const CreatePost = () => {
-  const { loading, postData, error, success } = useSelector(
-    (state) => state.newPost
+  const { loading, allData, error, success } = useSelector(
+    (state) => state.feed
   );
   const { userToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -32,8 +32,7 @@ const CreatePost = () => {
       postData: newPostData,
     };
     dispatch(addPost(data, userToken));
-    console.log(loading, postData, error, success);
-    if (postData) {
+    if (allData) {
       setNewPostData({ content: "" });
     }
   };

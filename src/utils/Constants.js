@@ -7,5 +7,6 @@ export const POSTURL = {
     Post: '/api/posts',
     GetAllPosts: '/api/posts',
     Edit: '/api/posts/edit',
-    Delete: '/api/posts'
+    Delete: '/api/posts',
+    Like: "/api/posts/like"
 }

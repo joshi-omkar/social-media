@@ -11,7 +11,8 @@ import { useEffect, useRef, useState } from "react";
 import {
   deletePost,
   editPost,
-} from "../../features/newPostSlice/newPostAction";
+  likePost,
+} from "../../features/Feed/FeedAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const SettingDropdown = ({
@@ -138,13 +139,17 @@ export const Card = ({ data }) => {
           <div className="right-side">
             <div style={{ cursor: "pointer" }}>
               <UpArrow
-                onClick={() => {
-                  setCount(count + 1);
+                onClick={(e) => {
+                  e.preventDefault();
+                  const postData = {
+                    postId: data._id,
+                  };
+                  dispatch(likePost(postData));
                 }}
               />
             </div>
             <label style={{ marginLeft: "4px", marginBottom: "2px" }}>
-              {data.likes.likeCount}
+              {data.likes.likedBy.length}
             </label>
             <div style={{ cursor: "pointer" }}>
               <DownArrow
@@ -159,7 +164,7 @@ export const Card = ({ data }) => {
               {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
-                <p> @{data.username}</p>
+                <p> @{data.email}</p>
               </span>
               •<p>{time}</p>
             </div>

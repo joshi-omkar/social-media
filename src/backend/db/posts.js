@@ -11,7 +11,7 @@ export const posts = [
     _id: uuid(),
     firstName: "Adarsh",
     lastName: "Balak",
-    email: "adarshbalak",
+    email: "abc@gmail.com",
     profileAvatar:
       "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
     content: "I'm proud of my father.",
@@ -32,7 +32,7 @@ export const posts = [
           _id: uuid(),
           firstName: "Adarsh",
           lastName: "Balak",
-          email: "adarshbalak",
+          email: "abc@gmail.com",
           profileAvatar:
             "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
         },
@@ -129,7 +129,7 @@ export const posts = [
     _id: uuid(),
     firstName: "Adarsh",
     lastName: "Balak",
-    email: "adarshbalak",
+    email: "abc@gmail.com",
     profileAvatar:
       "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
     content: `Be courageous. Challenge orthodoxy. Stand up for what you believe in. Make sure you have stories to cherish lifetime.`,
@@ -268,7 +268,7 @@ export const posts = [
           _id: uuid(),
           firstName: "Adarsh",
           lastName: "Balak",
-          email: "adarshbalak",
+          email: "abc@gmail.com",
           profileAvatar:
             "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
         },
@@ -485,7 +485,7 @@ export const posts = [
           _id: uuid(),
           firstName: "Adarsh",
           lastName: "Balak",
-          email: "adarshbalak",
+          email: "abc@gmail.com",
           profileAvatar:
             "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
         },
@@ -564,7 +564,7 @@ export const posts = [
           _id: uuid(),
           firstName: "Adarsh",
           lastName: "Balak",
-          email: "adarshbalak",
+          email: "abc@gmail.com",
           profileAvatar:
             "https://res.cloudinary.com/yuvraj1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
         },

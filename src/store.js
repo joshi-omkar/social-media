@@ -6,7 +6,7 @@ import { feedReducer } from "./features/Feed/FeedSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    newPost: newPostReducer,
+    // newPost: newPostReducer,
     feed: feedReducer,
   },
 });
