@@ -10,8 +10,6 @@ const initialState = {
   success: false,
 };
 
-console.log(initialState.userInfo, initialState.userToken);
-
 const authSlice = createSlice({
   name: "auth",
   initialState,

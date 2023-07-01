@@ -44,11 +44,10 @@ export const editPost = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        POSTURL.Edit + `/${postData.id}`,
+        `${POSTURL.Edit}/${postData.postId}`,
         postData,
         config
       );
-      console.log(postData);
       return response.data.posts;
     } catch (error) {
       if (error.response && error.response.data.errors) {

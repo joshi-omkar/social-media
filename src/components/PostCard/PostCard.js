@@ -76,17 +76,21 @@ export const Card = ({ data }) => {
     e.preventDefault();
     setIsEdit(false);
     const postData = {
-      editPostData,
-      id: data.id 
+      postData: editPostData,
+      postId: data._id,
     };
-    console.log(postData)
     dispatch(editPost(postData, userToken));
+  };
+
+  const handleUpdateCancle = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
   };
 
   return (
     <div className="post-card">
       {isEdit ? (
-        <div>
+        <div className="edit-post-input">
           <textarea
             // className="create-post-input-textarea"
             placeholder="Create a post"
@@ -96,10 +100,19 @@ export const Card = ({ data }) => {
             onChange={(e) => {
               setEditPostData({ content: e.target.value });
             }}
+            style={{ width: "90%" }}
           />
-          <button onClick={handleUpdate} className="create-post-button">
-            Post
-          </button>
+          <div style={{width: '50%', display: 'flex', justifyContent: 'space-between'}}>
+            <button onClick={handleUpdate} className="edit-post-button">
+              Edit
+            </button>
+            <button
+              onClick={handleUpdateCancle}
+              className="cancle-edit-post-button"
+            >
+              Cancle
+            </button>
+          </div>
         </div>
       ) : (
         <>
@@ -112,7 +125,7 @@ export const Card = ({ data }) => {
               />
             </div>
             <label style={{ marginLeft: "4px", marginBottom: "2px" }}>
-              {count}
+              {data.likes.likeCount}
             </label>
             <div style={{ cursor: "pointer" }}>
               <DownArrow

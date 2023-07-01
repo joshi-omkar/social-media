@@ -56,7 +56,6 @@ const newPostSclice = createSlice({
         state.success = false;  
         state.error = payload;
         TostMessage(payload, "error");
-        console.log(payload)
       })
     },
   });

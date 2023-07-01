@@ -13,21 +13,21 @@ const feedSlice = createSlice({
   initialState,
   reducers: {
     newSort: (state) => {
-      const { allPosts } = state;
-      const sortedPosts = [...allPosts].sort((a, b) => {
-        const dateA = new Date(a.createdAt);
-        const dateB = new Date(b.createdAt);
-        return dateA - dateB;
+      const sortedPosts = [...state.allPosts].sort((a, b) => {
+        const dateA = new Date(a?.createdAt);
+        const dateB = new Date(b?.createdAt);
+        return dateB - dateA;
       });
-      console.log(state.allPosts)
+      console.log(sortedPosts);
+      console.log(current(state));
       return { ...state, allPosts: sortedPosts };
     },
     trendingSort: (state) => {
-      const { allPosts } = state;
-      const sortedPosts = [...allPosts].sort(
-        (a, b) => a.likes.likeCount - b.likes.likeCount
+      const sortedPosts = [...state.allPosts].sort(
+        (a, b) => b?.likes?.likeCount - a?.likes?.likeCount
       );
-      console.log(state.allPosts)
+      console.log(sortedPosts);
+      console.log(current(state));
       return { ...state, allPosts: sortedPosts };
     },
   },
