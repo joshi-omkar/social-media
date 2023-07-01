@@ -6,5 +6,6 @@ export const AUTHURL = {
 export const POSTURL = {
     Post: '/api/posts',
     GetAllPosts: '/api/posts',
-    Edit: '/api/posts/edit'
+    Edit: '/api/posts/edit',
+    Delete: '/api/posts'
 }

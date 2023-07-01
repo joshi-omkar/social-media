@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPost, editPost } from "./newPostAction";
+import { addPost, deletePost, editPost } from "./newPostAction";
 import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
@@ -56,6 +56,27 @@ const newPostSclice = createSlice({
         state.success = false;  
         state.error = payload;
         TostMessage(payload, "error");
+      })
+      //delete post
+      builder.addCase(deletePost.pending, (state)=> {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+      })
+      builder.addCase(deletePost.fulfilled, (state, {payload}) => {
+        state.postData = payload;
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.reloadAllPosts = !state.reloadAllPosts
+        TostMessage("Post deleted!", "success");
+      })
+      builder.addCase(deletePost.rejected, (state, {payload}) => {
+        state.loading = false;
+        state.success = false;  
+        state.error = payload;
+        TostMessage(payload, "error");
+        console.log(payload)
       })
     },
   });

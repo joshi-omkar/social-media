@@ -8,7 +8,10 @@ import DownArrow from "../../assets/DownArrow";
 import ShareSVG from "../../assets/ShareSVG";
 import SettingSVG from "../../assets/SettingSVG";
 import { useEffect, useRef, useState } from "react";
-import { editPost } from "../../features/newPostSlice/newPostAction";
+import {
+  deletePost,
+  editPost,
+} from "../../features/newPostSlice/newPostAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const SettingDropdown = ({
@@ -16,6 +19,7 @@ const SettingDropdown = ({
   setShowDropdown,
   outSideClickRef,
   setIsEdit,
+  handleDeletePost,
 }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,7 +49,7 @@ const SettingDropdown = ({
         {showDropdown && (
           <ul className="setting-dropdown-items">
             <li onClick={handleClickOnEdit}>Edit</li>
-            <li>Delete</li>
+            <li onClick={handleDeletePost}>Delete</li>
           </ul>
         )}
       </div>
@@ -59,6 +63,7 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
@@ -87,6 +92,14 @@ export const Card = ({ data }) => {
     setIsEdit(false);
   };
 
+  const handleDeletePost = (e) => {
+    e.preventDefault();
+    const postData = {
+      postId: data._id,
+    };
+    dispatch(deletePost(postData, userToken));
+  };
+
   return (
     <div className="post-card">
       {isEdit ? (
@@ -102,7 +115,13 @@ export const Card = ({ data }) => {
             }}
             style={{ width: "90%" }}
           />
-          <div style={{width: '50%', display: 'flex', justifyContent: 'space-between'}}>
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
             <button onClick={handleUpdate} className="edit-post-button">
               Edit
             </button>
@@ -185,6 +204,7 @@ export const Card = ({ data }) => {
                 setShowDropdown={setShowDropdown}
                 outSideClickRef={outSideClickRef}
                 setIsEdit={setIsEdit}
+                handleDeletePost={handleDeletePost}
               />
             )}
           </div>
