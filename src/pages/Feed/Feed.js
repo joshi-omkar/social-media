@@ -12,6 +12,7 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   const [filteredData, setFilteredData] = useState([]);
+  const [active, setActive] = useState("new");
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -19,7 +20,7 @@ const Feed = () => {
 
   useEffect(() => {
     setFilteredData(
-      allPosts.filter(
+      allPosts?.filter(
         (post) =>
           userInfo?.followers?.some((item) => item?._id === post?.userId) ||
           userInfo?.following?.some((item) => item?._id === post?.userId) ||
@@ -27,11 +28,12 @@ const Feed = () => {
       )
     );
   }, [allPosts, userInfo]);
+
   return (
     <div className="feed">
-      <CreatePost/>
-      <UserFeedTab/>
-      <UserFeed loading={loading} data={filteredData} />
+      <CreatePost />
+      <UserFeedTab active={active} setActive={setActive} />
+      <UserFeed active={active} loading={loading} data={filteredData} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { PostCard } from "../PostCard/PostCard";
 import Loader from "../../assets/loader";
 import { useLocation } from "react-router-dom";
 
-const UserFeed = ({ data, loading }) => {
+const UserFeed = ({ data, loading, active }) => {
   const [path, setPath] = useState();
   let location = useLocation();
 
@@ -12,6 +12,8 @@ const UserFeed = ({ data, loading }) => {
     if (location.pathname === "/explore") setPath(true);
     else setPath(false);
   }, [location.pathname]);
+
+  
 
   return (
     <div className="userfeed">
@@ -27,7 +29,7 @@ const UserFeed = ({ data, loading }) => {
       ) : loading ? (
         <Loader />
       ) : (
-        <PostCard dataToShow={data} />
+        <PostCard active={active} dataToShow={data} />
       )}
     </div>
   );

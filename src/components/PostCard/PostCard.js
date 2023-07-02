@@ -65,13 +65,16 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isDisliked, setIsDisliked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
+  // const [isDisliked, setIsDisliked] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
-  const { userToken } = useSelector((state) => state.auth);
+  const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const isLiked = data.likes.likedBy.some((item) => item._id === userInfo._id);
+  const isDisliked = data.likes.dislikedBy.some((item) => item._id === userInfo._id);
 
   useEffect(() => {
     if (isEdit && textareaRef.current) {
@@ -149,7 +152,6 @@ export const Card = ({ data }) => {
                     postId: data._id,
                   };
                   dispatch(likePost(postData));
-                  setIsLiked(true);
                 }}
               />
             </div>
@@ -166,7 +168,6 @@ export const Card = ({ data }) => {
                     postId: data._id,
                   };
                   dispatch(disLikePost(postData));
-                  setIsDisliked(true);
                 }}
               />
             </div>
@@ -231,12 +232,25 @@ export const Card = ({ data }) => {
   );
 };
 
-export const PostCard = ({ dataToShow }) => {
+export const PostCard = ({ dataToShow, active }) => {
   return (
     <div className="post-card-container">
-      {dataToShow?.map((data, key) => {
-        return <Card data={data} key={key} />;
-      })}
+      {active === "new"
+        ? [...dataToShow]
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            .map((data, key) => {
+              return <Card data={data} key={key} />;
+            })
+        : [...dataToShow]
+            .sort(
+              (a, b) =>
+                b?.likes?.likeCount +
+                b?.comments?.length -
+                (a?.likes?.likeCount + a?.comments?.length)
+            )
+            .map((data, key) => {
+              return <Card data={data} key={key} />;
+            })}
     </div>
   );
 };

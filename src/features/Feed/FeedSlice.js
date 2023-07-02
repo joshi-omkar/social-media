@@ -13,20 +13,6 @@ const feedSlice = createSlice({
   name: "feed",
   initialState,
   reducers: {
-    newSort: (state) => {
-      const sortedPosts = [...state.allPosts].sort((a, b) => {
-        const dateA = new Date(a?.createdAt);
-        const dateB = new Date(b?.createdAt);
-        return dateB - dateA;
-      });
-      return { ...state, allPosts: sortedPosts };
-    },
-    trendingSort: (state) => {
-      const sortedPosts = [...state.allPosts].sort(
-        (a, b) => b?.likes?.likeCount - a?.likes?.likeCount
-      );
-      return { ...state, allPosts: sortedPosts };
-    },
   },
   extraReducers: (builder) => {
     //get all posts
@@ -35,6 +21,7 @@ const feedSlice = createSlice({
     });
     builder.addCase(getAllPosts.fulfilled, (state, { payload }) => {
       state.loading = false;
+      // state.allPosts = payload;
       state.allPosts = payload;
     });
     builder.addCase(getAllPosts.rejected, (state, action) => {
@@ -102,8 +89,8 @@ const feedSlice = createSlice({
     });
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       state.allPosts = payload;
-      state.loading = false;
-      state.success = true;
+      // state.loading = false;
+      // state.success = true;
       state.error = null;
       TostMessage("Post Liked!", "success");
     });
@@ -131,5 +118,4 @@ const feedSlice = createSlice({
     });
   },
 });
-export const { newSort, trendingSort } = feedSlice.actions;
 export const feedReducer = feedSlice.reducer;

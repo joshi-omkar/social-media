@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UserFeedTab.css";
-import { useDispatch, useSelector } from "react-redux";
-import { newSort, trendingSort } from "../../features/Feed/FeedSlice";
 
-const UserFeedTab = () => {
-  const [active, setActive] = useState(false);
-
-  const dispatch = useDispatch();
+const UserFeedTab = ({ setActive}) => {
 
   const handleOnClickNew = (e) => {
     e.preventDefault();
-    dispatch(newSort());
+    setActive('new')
   };
 
   const handleOnClickTrending = (e) => {
     e.preventDefault();
-    dispatch(trendingSort());
+    setActive('trending')
   };
 
   return (
