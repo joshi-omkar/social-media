@@ -8,8 +8,14 @@ import DownArrow from "../../assets/DownArrow";
 import ShareSVG from "../../assets/ShareSVG";
 import SettingSVG from "../../assets/SettingSVG";
 import { useEffect, useRef, useState } from "react";
-import { deletePost, disLikePost, editPost, likePost } from "../../features/Feed/FeedAction";
+import {
+  deletePost,
+  disLikePost,
+  editPost,
+  likePost,
+} from "../../features/Feed/FeedAction";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../assets/loader";
 
 const SettingDropdown = ({
   showDropdown,
@@ -56,7 +62,6 @@ const SettingDropdown = ({
 
 export const Card = ({ data }) => {
   const time = moment(data.createdAt).fromNow();
-  const [count, setCount] = useState(data.likes.likeCount);
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -153,7 +158,7 @@ export const Card = ({ data }) => {
             </label>
             <div style={{ cursor: "pointer" }}>
               <DownArrow
-                fill={isLiked ? "#492fff" : "#fff"}
+                fill={isDisliked ? "#492fff" : "#fff"}
                 onClick={(e) => {
                   e.preventDefault();
 

@@ -19,27 +19,23 @@ const feedSlice = createSlice({
         const dateB = new Date(b?.createdAt);
         return dateB - dateA;
       });
-      console.log(sortedPosts);
-      console.log(current(state));
       return { ...state, allPosts: sortedPosts };
     },
     trendingSort: (state) => {
       const sortedPosts = [...state.allPosts].sort(
         (a, b) => b?.likes?.likeCount - a?.likes?.likeCount
       );
-      console.log(sortedPosts);
-      console.log(current(state));
       return { ...state, allPosts: sortedPosts };
     },
   },
   extraReducers: (builder) => {
+    //get all posts
     builder.addCase(getAllPosts.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(getAllPosts.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.allPosts = payload;
-      console.log(payload)
     });
     builder.addCase(getAllPosts.rejected, (state, action) => {
       state.loading = false;

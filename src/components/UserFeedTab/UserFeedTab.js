@@ -7,7 +7,6 @@ const UserFeedTab = () => {
   const [active, setActive] = useState(false);
 
   const dispatch = useDispatch();
-  const { allPosts } = useSelector((state) => state.feed);
 
   const handleOnClickNew = (e) => {
     e.preventDefault();

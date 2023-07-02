@@ -8,6 +8,7 @@ import Feed from "./pages/Feed/Feed";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Explore from "./pages/Explore/Explore";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
@@ -21,6 +22,15 @@ const App = () => {
           element={
             <RequireAuth>
               <Feed/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/explore"
+          exact
+          element={
+            <RequireAuth>
+              <Explore/>
             </RequireAuth>
           }
         />
