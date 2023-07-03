@@ -1,103 +1,167 @@
 .post-card-container {
-    /* width: 500px; */
-    padding: 12px;
-    margin: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .post-card {
-    background-color: #00111C;
-    padding: 12px;
-    display: flex;
-    gap: 16px;
-    border-radius: 4px;
-  }
-  
-  .right-side {
-    display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    align-items: center;
-  }
+  /* width: 500px; */
+  padding: 12px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .right-side>p {
-    text-align: center;
-  }
+.post-card {
+  background-color: #00111c;
+  padding: 12px;
+  display: flex;
+  gap: 16px;
+  border-radius: 4px;
+}
 
-  .left-side{
-    width: 100%;
-  }
-  
-  .left-side img {
-    width: 6%;
-  }
-  
+.right-side {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-side > p {
+  text-align: center;
+}
+
+.left-side {
+  width: 100%;
+}
+
+.left-side img {
+  width: 6%;
+}
+
+.card-user-details {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  color: #898989;
+}
+
+.card-user-details > span {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.card-user-details > p {
+  font-size: 0.8rem;
+}
+
+.post-details {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-details > p {
+  font-size: 0.8rem;
+}
+
+.post-details > span {
+  display: flex;
+  gap: 12px;
+  font-size: 0.7rem;
+}
+
+.post-details > span > div {
+  background-color: rgb(199, 173, 248);
+  color: rgb(80, 9, 187);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.card-left-lowerpart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-dropdown-items-container {
+  background-color: #00111c;
+}
+
+.setting-dropdown-items {
+  list-style-type: none;
+  top: 65px;
+  background-color: #003a61;
+  padding: 15px;
+  right: 15px;
+  border-radius: 4px;
+}
+
+.setting-dropdown-items > li {
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.setting-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 19%;
+}
+
+.edit-post-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.edit-post-input > textarea {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #00111c;
+  background-color: #00111c;
+  color: #e5e5e5;
+  height: 150px;
+}
+
+.edit-post-button {
+  padding: 15px;
+  background-color: #003a61;
+  color: #fff;
+  border-radius: 4px;
+  border: 1.5px solid #003a61;
+  cursor: pointer;
+}
+
+.cancle-edit-post-button {
+  padding: 15px;
+  background-color: #003a61;
+  color: #fff;
+  border-radius: 4px;
+  border: 1.5px solid #003a61;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
   .card-user-details {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     gap: 6px;
-    color: #898989;
+  }
+  .card-user-details > span {
+    display: flex;
+    gap: 2px;
+    font-size: 0.8rem;
   }
 
-  .card-user-details >span{
-    display: flex;
-    gap: 4px;
-    align-items: center;
+  .card-user-details > span > p:first-of-type {
+    font-size: 0.6rem;
   }
-  
+
   .card-user-details > p {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
-  
-  .post-details {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .post-details > p {
-    font-size: 0.8rem;
-  }
-  
-  .post-details > span {
-    display: flex;
-    gap: 12px;
-    font-size: 0.7rem;
-  }
-  
-  .post-details > span > div {
-    background-color: rgb(199, 173, 248);
-    color: rgb(80, 9, 187);
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
-  
-  .card-left-lowerpart {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 720px) {
-    .card-user-details{
-      gap: 6px;
-    }
-    .card-user-details >span{
-      display: flex;
-      gap: 2px;
-      font-size: 0.8rem;
-    }
-
-    .card-user-details >span>p:first-of-type{
-      font-size: 0.6rem;
-    }
-    
-    .card-user-details > p {
-      font-size: 0.6rem;
-    }
-  }
-  
+}

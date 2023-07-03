@@ -1,27 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserFeed.css";
 import { PostCard } from "../PostCard/PostCard";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts } from "../../features/Feed/FeedAction";
 import Loader from "../../assets/loader";
+import { useLocation } from "react-router-dom";
 
-const UserFeed = () => {
-  const { loading, allPosts, error } = useSelector(
-    (state) => state.feed
-  );
-  const { reloadAllPosts } = useSelector(
-    (state) => state.newPost
-  );
-  const dispatch = useDispatch();
+const UserFeed = ({ data, loading, active }) => {
+  const [path, setPath] = useState();
+  let location = useLocation();
+
   useEffect(() => {
-    dispatch(getAllPosts());
-  }, [reloadAllPosts]);
+    if (location.pathname === "/explore") setPath(true);
+    else setPath(false);
+  }, [location.pathname]);
 
   
 
   return (
     <div className="userfeed">
-      {loading ? <Loader /> : <PostCard dataToShow={allPosts} />}
+      {path ? (
+        loading ? (
+          <div>
+            <PostCard dataToShow={data} />
+            <Loader />
+          </div>
+        ) : (
+          <PostCard dataToShow={data} />
+        )
+      ) : loading ? (
+        <Loader />
+      ) : (
+        <PostCard active={active} dataToShow={data} />
+      )}
     </div>
   );
 };

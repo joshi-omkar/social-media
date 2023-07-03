@@ -1,36 +1,26 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { handleLogout } from '../../features/auth/authSlice';
-import { Link, useNavigate } from 'react-router-dom';
-import './Navbar.css'
-import SearchBar from './SearchBar';
+import React from "react";
+import "./Navbar.css";
+import SearchBar from "./SearchBar";
+import ProfileDropdown from "./ProfileDropdown";
+import { Link } from "react-router-dom";
+import Fomo from "../../assets/Fomo";
+import ExploreSVG from "../../assets/ExploreSVG";
+import BookmarkNav from "../../assets/BookmarkNav";
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
-
-  const handleOnLogout = (e) =>{
-    e.preventDefault();
-    dispatch(handleLogout())
-    navigate('/login')
-  }
-
   return (
-    <div className='navbar'>
-        <div className='logo'>
-            NeoG 
-        </div>
-        <div style={{width: "30%"}}>
-          <SearchBar/>
-        </div>
-        <div className='logout-button'>
-          <select>
-            <option><Link to={'/profile'}>Profile</Link></option>
-            <option onClick={handleOnLogout}>Logout</option>
-          </select>
-        </div>
+    <div className="navbar">
+      <Link to='/' className="logo" style={{display: "flex"}}><Fomo/></Link>
+      <div style={{ width: "30%" }}>
+        <SearchBar />
+      </div>
+      <div style={{display: 'flex',width: '200px', gap: '20px'}}>
+        <Link to={'/explore'}><ExploreSVG/></Link>
+        <Link to={'/bookmark'}><BookmarkNav/></Link>
+      </div>
+      <ProfileDropdown />
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

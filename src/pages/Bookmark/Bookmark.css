@@ -1,0 +1,25 @@
+.bookmark-page {
+  display: flex;
+  /* width: %; */
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookmark-container {
+  background-color: #002945;
+  /* height: 1000px; */
+  margin: 12px;
+  border-radius: 4px;
+  /* margin-left: 0; */
+  width: 60%;
+}
+
+.bookmark {
+  /* width: 500px; */
+  padding: 12px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

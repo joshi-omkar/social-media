@@ -15,32 +15,28 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const guestData = {
+    email: "abc@gmail.com",
+    password: "123456",
+  };
+
   const handleOnLogIn = (e) => {
     e.preventDefault();
     const data = {
-      firstName: user.firstName,
-      lastName: user.lastName,
       email: user.email,
       password: user.password,
     };
 
-    if (
-      verifyEmail(user.email) &&
-      verifyName(user.firstName) &&
-      verifyName(user.lastName) &&
-      verifyLength(user.password, 6)
-    ) {
+    if (verifyEmail(user.email) && verifyLength(user.password, 6)) {
       dispatch(loginUser(data));
     } else {
       setErrorMsg("Please fill information correctly");
     }
+  };
 
-    if (error === "Request failed with status code 404") {
-      setErrorMsg("User Not Present Please Sign Up!");
-    }
-    if (error === "Request failed with status code 500") {
-      setErrorMsg("Server Error!!");
-    }
+  const handleOnGuestLogIn = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(guestData));
   };
 
   useEffect(() => {
@@ -80,6 +76,13 @@ const Login = () => {
         <p style={{ color: "rgb(236, 23, 23)" }}>{errorMsg}</p>
         <button onClick={handleOnLogIn} className="signup-button" type="submit">
           {loading ? <Loader /> : "Login"}
+        </button>
+        <button
+          onClick={handleOnGuestLogIn}
+          className="signup-button"
+          type="submit"
+        >
+          {loading ? <Loader /> : "Guest Login"}
         </button>
       </div>
       <div>
