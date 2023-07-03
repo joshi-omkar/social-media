@@ -10,7 +10,7 @@ const Feed = () => {
   const { allPosts, loading } = useSelector((state) => state.feed);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [filteredData, setFilteredData] = useState([]);
   const [active, setActive] = useState("new");
 
@@ -18,14 +18,18 @@ const Feed = () => {
     dispatch(getAllPosts());
   }, []);
 
+  console.log(userInfo)
+  // console.log(user)
+
   useEffect(() => {
     setFilteredData(
-      allPosts?.filter(
-        (post) =>
-          userInfo?.followers?.some((item) => item?._id === post?.userId) ||
-          userInfo?.following?.some((item) => item?._id === post?.userId) ||
-          userInfo?._id === post?.userId
-      )
+      // allPosts?.filter(
+      //   (post) =>
+      //   user?.followers?.some((item) => item?._id === post?.userId) ||
+      //   user?.following?.some((item) => item?._id === post?.userId) ||
+      //   user?._id === post?.userId
+      // )
+      allPosts
     );
   }, [allPosts, userInfo]);
 

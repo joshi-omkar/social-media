@@ -16,6 +16,7 @@ import {
 } from "../../features/Feed/FeedAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../assets/loader";
+import { addBookmark, removeBookmark } from "../../features/auth/authAction";
 
 const SettingDropdown = ({
   showDropdown,
@@ -65,16 +66,23 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   // const [isLiked, setIsLiked] = useState(false);
   // const [isDisliked, setIsDisliked] = useState(false);
+  const [isBookMarked, setIsBookMarked] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
   const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  
 
-  const isLiked = data.likes.likedBy.some((item) => item._id === userInfo._id);
-  const isDisliked = data.likes.dislikedBy.some((item) => item._id === userInfo._id);
+  const isLiked = data.likes.likedBy.some((item) => item._id === user?._id);
+  const isDisliked = data.likes.dislikedBy.some(
+    (item) => item._id === user?._id
+  );
+  // const isBookMarked = userInfo?.bookmarks.some((item) => item.email === data.email);
+  // console.log(isBookMarked)
 
   useEffect(() => {
     if (isEdit && textareaRef.current) {
@@ -205,8 +213,21 @@ export const Card = ({ data }) => {
               <div style={{ cursor: "pointer" }}>
                 <ShareSVG />
               </div>
-              <div style={{ cursor: "pointer" }} onClick={() => setFill(!fill)}>
-                <Bookmark fill={!fill ? "none" : "#e5e5e5"} />
+              <div
+                style={{ cursor: "pointer" }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const postData = {
+                    postId: data._id,
+                  };
+                  setIsBookMarked(!isBookMarked)
+                  isBookMarked?
+                    dispatch(removeBookmark(postData)) 
+                    : dispatch(addBookmark(postData));
+                  setFill(!fill);
+                }}
+              >
+                <Bookmark fill={!isBookMarked ? "none" : "#e5e5e5"} />
               </div>
               <div
                 style={{ cursor: "pointer" }}

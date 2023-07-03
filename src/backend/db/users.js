@@ -18,7 +18,6 @@ export const users = [
     password: "123456",
     createdAt: "2022-08-01",
     updatedAt: formatDate(),
-
     followers: [
       {
         _id: uuid(),
@@ -43,7 +42,7 @@ export const users = [
     firstName: "Mayank",
     lastName: "Kumar",
     email: "mayank123@gmail.com",
-    password: "mayank123",
+    password: "123456",
     bio: "Yo bro! Brown munde ! Mayank here",
     website: "https://github.com/mayank0801",
     profileAvatar: "https://avatars.githubusercontent.com/u/36763315?v=4",
@@ -84,6 +83,7 @@ export const users = [
           "https://media.istockphoto.com/id/1354770626/vector/childhood-education-study-success-like-concept-young-happy-cheerful-smiling-boy-pupil.jpg?s=612x612&w=0&k=20&c=7Mhgf-cdXQrHQHjjuhYaPMT81RFQxthX01gX0OklMQU=",
       },
     ],
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -115,6 +115,7 @@ export const users = [
         profileAvatar: "https://avatars.githubusercontent.com/u/94983216?v=4",
       },
     ],
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -153,6 +154,7 @@ export const users = [
         profileAvatar: "https://avatars.githubusercontent.com/u/67819701?v=4",
       },
     ],
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -175,5 +177,6 @@ export const users = [
       },
     ],
     followers: [],
+    bookmarks: [],
   },
 ];

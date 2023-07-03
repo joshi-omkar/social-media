@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleLogout } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import './Navbar.css'
+import "./Navbar.css";
 
 const ProfileDropdown = () => {
   const outSideClickRef = useRef(null);
@@ -14,6 +14,7 @@ const ProfileDropdown = () => {
     dispatch(handleLogout());
     navigate("/login");
   };
+  const { userInfo } = useSelector((state) => state.auth);
 
   const handleShowDropdown = (e) => {
     e.preventDefault();
@@ -40,13 +41,13 @@ const ProfileDropdown = () => {
   return (
     <div className="dropdown-container">
       <div ref={outSideClickRef} onClick={handleShowDropdown}>
-        Omkar
+        {userInfo?.firstName}
       </div>
 
       <div className="dropdown-items-container">
         {showDropdown && (
           <ul className="dropdown-items">
-            <li >Profile</li>
+            <li>Profile</li>
             <li onClick={handleOnLogout}>Logout</li>
           </ul>
         )}

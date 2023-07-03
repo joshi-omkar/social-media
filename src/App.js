@@ -9,6 +9,7 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Explore from "./pages/Explore/Explore";
+import Bookmark from "./pages/Bookmark/Bookmark";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
@@ -31,6 +32,15 @@ const App = () => {
           element={
             <RequireAuth>
               <Explore/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/bookmark"
+          exact
+          element={
+            <RequireAuth>
+              <Bookmark/>
             </RequireAuth>
           }
         />

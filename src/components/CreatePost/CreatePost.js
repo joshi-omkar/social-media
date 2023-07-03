@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./CreatePost.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addPost } from "../../features/newPostSlice/newPostAction";
+import { addPost } from "../../features/Feed/FeedAction";
 
 const CreatePost = () => {
   const { loading, allData, error, success } = useSelector(
