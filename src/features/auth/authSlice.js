@@ -10,13 +10,13 @@ import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
   loading: false,
-  userInfo: JSON.parse(localStorage.getItem("user")),
+  userInfo: JSON.parse(localStorage.getItem("user")) ?? null,
   userToken: localStorage.getItem("token"),
   error: null,
   success: false,
+  bookmarks: [],
+  // bookmarks: JSON.parse(localStorage.getItem("user"))?.bookmarks,
 };
-
-console.log(initialState)
 
 const authSlice = createSlice({
   name: "auth",
@@ -67,12 +67,26 @@ const authSlice = createSlice({
       state.error = payload;
       TostMessage(payload, "error");
     });
+    //get bookmark
+    builder.addCase(getBookmark.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getBookmark.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      console.log(payload);
+      state.bookmarks = payload;
+    });
+    builder.addCase(getBookmark.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.error = payload
+      console.log(payload)
+    });
     // add bookmark
     builder.addCase(addBookmark.pending, (state) => {});
     builder.addCase(addBookmark.fulfilled, (state, { payload }) => {
       const user = { ...state.userInfo, bookmarks: payload.bookmarks };
-      console.log(user);
       state.userInfo = user;
+      state.bookmarks = payload.bookmarks;
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", JSON.stringify(state.userToken));
       state.loading = false;
@@ -86,10 +100,11 @@ const authSlice = createSlice({
     //remove bookmark
     builder.addCase(removeBookmark.pending, (state) => {});
     builder.addCase(removeBookmark.fulfilled, (state, { payload }) => {
-      console.log(payload)
+      console.log(payload);
       const user = { ...state.userInfo, bookmarks: payload.bookmarks };
       console.log(user);
       state.userInfo = user;
+      state.bookmarks = payload.bookmarks;
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", JSON.stringify(state.userToken));
       state.loading = false;

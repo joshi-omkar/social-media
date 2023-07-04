@@ -69,20 +69,20 @@ export const Card = ({ data }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   // const [isLiked, setIsLiked] = useState(false);
   // const [isDisliked, setIsDisliked] = useState(false);
-  const [isBookMarked, setIsBookMarked] = useState(false);
+  // const [isBookMarked, setIsBookMarked] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
   const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  
 
   const isLiked = data.likes.likedBy.some((item) => item._id === user?._id);
   const isDisliked = data.likes.dislikedBy.some(
     (item) => item._id === user?._id
   );
-  // const isBookMarked = userInfo?.bookmarks.some((item) => item.email === data.email);
-  // console.log(isBookMarked)
+  const isBookMarked = userInfo?.bookmarks.some(
+    (item) => item._id === data._id
+  );
 
   useEffect(() => {
     if (isEdit && textareaRef.current) {
@@ -220,9 +220,9 @@ export const Card = ({ data }) => {
                   const postData = {
                     postId: data._id,
                   };
-                  setIsBookMarked(!isBookMarked)
-                  isBookMarked?
-                    dispatch(removeBookmark(postData)) 
+                  // setIsBookMarked(!isBookMarked)
+                  isBookMarked
+                    ? dispatch(removeBookmark(postData))
                     : dispatch(addBookmark(postData));
                   setFill(!fill);
                 }}

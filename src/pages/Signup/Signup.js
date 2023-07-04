@@ -107,7 +107,13 @@ const Signup = () => {
                 onChange={(e) => {
                   setUser({ ...user, password: e.target.value });
                 }}
-                style={{ width: "460px", borderTop: 'none', borderBottom: 'none', borderLeft: 'none', borderRight: "none" }}
+                style={{
+                  width: "460px",
+                  borderTop: "none",
+                  borderBottom: "none",
+                  borderLeft: "none",
+                  borderRight: "none",
+                }}
               />
             </div>
             <div
@@ -115,12 +121,11 @@ const Signup = () => {
                 backgroundColor: "#fff",
                 marginTop: "2px",
                 display: "flex",
-                width: '40px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                borderRadius: "0px 2px 2px 0px"
-                
+                width: "40px",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+                borderRadius: "0px 2px 2px 0px",
               }}
               onClick={() => setShowPassword(!showPassword)}
             >
@@ -135,7 +140,11 @@ const Signup = () => {
           className="signup-button"
           type="submit"
         >
-          {loading ? <Loader /> : "Sign Up"}
+          {loading ? (
+            <Loader width={"20px"} height={"20px"} strokeWidth={8} />
+          ) : (
+            "Sign Up"
+          )}
         </button>
       </div>
       <div>

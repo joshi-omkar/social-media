@@ -1,6 +1,6 @@
 .create-post{
     height: 100px;
-    background-color: #002945;
+    background-color: #393E46;
     margin: 12px;
     border-radius: 4px;
     display: flex;
@@ -15,17 +15,17 @@
     padding: 12px;
     font-size: 16px;
     border-radius: 4px;
-    border: 1px solid #00111C;
-    background-color: #00111C;
-    color: #e5e5e5;
+    border: 1px solid #00ADB5;
+    background-color: #222831;
+    color: #EEEEEE;
 }
 
 .create-post-button{
     padding: 15px;
-    background-color: #00111C;
-    color: #fff;
+    background-color: #222831;
+    color: #EEEEEE;
     border-radius: 4px;
-    border: 1.5px solid #00111C;
+    border: 1.5px solid #00ADB5;
     cursor: pointer;
 }
 
@@ -34,9 +34,9 @@
     padding: 12px;
     font-size: 16px;
     border-radius: 4px;
-    border: 1px solid #00111C;
-    background-color: #00111C;
-    color: #e5e5e5;
+    border: 1px solid #00ADB5;
+    background-color: #222831;
+    color: #EEEEEE;
     
 }
 

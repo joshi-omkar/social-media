@@ -8,7 +8,7 @@
 }
 
 .post-card {
-  background-color: #00111c;
+  background-color: var(--primary-bg-color);
   padding: 12px;
   display: flex;
   gap: 16px;
@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 6px;
-  color: #898989;
+  color: var(--text-color);
 }
 
 .card-user-details > span {
@@ -70,8 +70,6 @@
 }
 
 .post-details > span > div {
-  background-color: rgb(199, 173, 248);
-  color: rgb(80, 9, 187);
   padding: 4px 8px;
   border-radius: 4px;
 }
@@ -83,13 +81,13 @@
 }
 
 .setting-dropdown-items-container {
-  background-color: #00111c;
+  background-color: var(--secondary-bg-color);
 }
 
 .setting-dropdown-items {
   list-style-type: none;
   top: 65px;
-  background-color: #003a61;
+  background-color: var(--secondary-bg-color);
   padding: 15px;
   right: 15px;
   border-radius: 4px;
@@ -123,27 +121,27 @@
   padding: 12px;
   font-size: 16px;
   border-radius: 4px;
-  border: 1px solid #00111c;
-  background-color: #00111c;
-  color: #e5e5e5;
+  border: 1px solid var(--button-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
   height: 150px;
 }
 
 .edit-post-button {
   padding: 15px;
-  background-color: #003a61;
-  color: #fff;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
   border-radius: 4px;
-  border: 1.5px solid #003a61;
+  border: 1.5px solid var(--button-color);
   cursor: pointer;
 }
 
 .cancle-edit-post-button {
   padding: 15px;
-  background-color: #003a61;
-  color: #fff;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
   border-radius: 4px;
-  border: 1.5px solid #003a61;
+  border: 1.5px solid var(--button-color);
   cursor: pointer;
 }
 

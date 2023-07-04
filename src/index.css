@@ -1,3 +1,10 @@
+:root {
+  --primary-bg-color: #222831;
+  --secondary-bg-color: #393E46;
+  --text-color: #EEEEEE;
+  --button-color: #00ADB5;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -10,8 +17,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #00111C;
-  color: #e5e5e5;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
 }
 
 code {
@@ -29,6 +36,14 @@ textarea:focus{
 
 a{
   text-decoration: none;
-  color: #fff;
+  color: #EEEEEE;
 }
 
+button{
+  color: var(--text-color);
+}
+
+/* var(--primary-bg-color)
+var(--secondary-bg-color)
+var(--text-color)
+var(--button-color) */

@@ -1,9 +1,9 @@
 import * as React from "react"
-const Loader = (props) => (
+const Loader = (props, {width, height, strokeWidth}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={177}
-    height={177}
+    width={width}
+    height={height}
     preserveAspectRatio="xMidYMid"
     style={{
       margin: "auto",
@@ -19,9 +19,9 @@ const Loader = (props) => (
       cy={50}
       r={35}
       fill="none"
-      stroke="#e5e5e5"
+      stroke="#00ADB5"
       strokeDasharray="164.93361431346415 56.97787143782138"
-      strokeWidth={8}
+      strokeWidth={strokeWidth}
     >
       <animateTransform
         attributeName="transform"

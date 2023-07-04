@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import UserFeed from '../../components/UserFeed/UserFeed'
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllPosts } from '../../features/Feed/FeedAction';
-import Loader from '../../assets/loader';
+import React, { useEffect, useState } from "react";
+import UserFeed from "../../components/UserFeed/UserFeed";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllPosts } from "../../features/Feed/FeedAction";
+import Loader from "../../assets/loader";
 
 const Explore = () => {
-
   const { allPosts } = useSelector((state) => state.feed);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -28,27 +27,7 @@ const Explore = () => {
   }, [allPosts, userInfo]);
 
   const [pageNumber, setPageNumber] = useState(1);
-  // console.log("hi");
   const [loading, setLoading] = useState(false);
-
-  const override = {
-    display: "block",
-    margin: "1.25rem auto",
-  };
-
-  // useEffect(() => {
-  //   // onClick={() => {
-  //   dispatchAuthState({
-  //     type: "setSearchInput",
-  //     payload: "",
-  //   });
-  //   dispatchAuthState({
-  //     type: "showRecentSearches",
-  //     payload: false,
-  //   });
-  //   // }}
-  // }, []);
-
   useEffect(() => {
     const infScrollHandler = () => {
       if (
@@ -62,22 +41,19 @@ const Explore = () => {
         }, 750);
       }
     };
-    allPosts.slice(0, pageNumber * 3).length !==
-    allPosts.length &&
+    allPosts.slice(0, pageNumber * 3).length !== allPosts.length &&
       window.addEventListener("scroll", infScrollHandler);
     return () => {
-      allPosts.slice(0, pageNumber * 3).length !==
-      allPosts.length &&
+      allPosts.slice(0, pageNumber * 3).length !== allPosts.length &&
         window.removeEventListener("scroll", infScrollHandler);
     };
   }, [allPosts, pageNumber]);
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center'}}>
-        <UserFeed loading={loading} data={allPosts.slice(0, pageNumber * 5)} />
-        {/* {loading ? <Loader/> : ""} */}
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <UserFeed loading={loading} data={allPosts.slice(0, pageNumber * 5)} />
     </div>
-  )
-}
+  );
+};
 
-export default Explore
+export default Explore;

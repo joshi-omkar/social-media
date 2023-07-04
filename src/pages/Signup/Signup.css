@@ -1,5 +1,5 @@
 .signup-container{
-    background-color: #002945;
+    background-color: var(--secondary-bg-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,11 +38,11 @@
 
 .signup-button{
     border: none;
-    background-color: #B6CCFE;
+    background-color: var(--primary-bg-color);
     padding: 12px;
     border-radius: 12px;
     cursor: pointer;
-    border: 1px solid #ABC4FF;
+    border: 1px solid var(--button-color);
     margin-top: 16px;
 }
 

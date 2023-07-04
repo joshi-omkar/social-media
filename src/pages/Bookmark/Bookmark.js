@@ -5,45 +5,28 @@ import { getBookmark } from "../../features/auth/authAction";
 import { USERURL } from "../../utils/Constants";
 import "./Bookmark.css";
 import axios from "axios";
+import Loader from "../../assets/loader";
 
 const Bookmark = () => {
-  // const { loading, bookmarks } = useSelector((state) => state.auth);
-  const [bookmarks, setBookmarks] = useState([]);
-  const [reload, setReload] = useState(false);
-
-  const getBookmark = async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const config = {
-        headers: {
-          authorization: token,
-        },
-      };
-      const response = await axios.get(`${USERURL.GetBookmarks}`, config);
-      setBookmarks(response.data.bookmarks);
-      console.log(response.data.bookmarks);
-      setReload(!reload)
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        console.log(error.response.data.errors[0]);
-      } else {
-        console.log(error.message);
-      }
-    }
-  };
+  const { loading, bookmarks } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getBookmark();
-  }, []);
+  }, [bookmarks]);
 
   return (
     <div className="bookmark-page">
       <div className="bookmark-container">
-        <div className="bookmark">
-          {bookmarks?.map((bookmark, key) => {
-            return <Card data={bookmark} key={key} />;
-          })}
-        </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="bookmark">
+            {bookmarks.length === 0 && <h3>No Bookmarks</h3>}
+            {bookmarks?.map((bookmark, key) => {
+              return <Card data={bookmark} key={key} />;
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

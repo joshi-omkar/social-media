@@ -21,7 +21,6 @@ const feedSlice = createSlice({
     });
     builder.addCase(getAllPosts.fulfilled, (state, { payload }) => {
       state.loading = false;
-      // state.allPosts = payload;
       state.allPosts = payload;
     });
     builder.addCase(getAllPosts.rejected, (state, action) => {

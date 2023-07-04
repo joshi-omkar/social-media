@@ -82,7 +82,11 @@ const Login = () => {
           className="signup-button"
           type="submit"
         >
-          {loading ? <Loader /> : "Guest Login"}
+          {loading ? (
+            <Loader width={"20px"} height={"20px"} strokeWidth={8} />
+          ) : (
+            "Guest Login"
+          )}
         </button>
       </div>
       <div>
