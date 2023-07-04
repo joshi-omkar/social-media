@@ -7,7 +7,7 @@
 }
 
 .bookmark-container {
-  background-color: #002945;
+  background-color: var(--secondary-bg-color);
   /* height: 1000px; */
   margin: 12px;
   border-radius: 4px;

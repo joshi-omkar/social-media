@@ -9,7 +9,7 @@ const SettingSVG = (props) => (
     {...props}
   >
     <path
-      fill="#fff"
+      fill="#EEEEEE"
       d="M14.5 4a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM14.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM12 22.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
     />
   </svg>

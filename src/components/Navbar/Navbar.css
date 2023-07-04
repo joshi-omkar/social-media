@@ -4,7 +4,7 @@
   align-items: center;
   padding: 15px;
   height: 64px;
-  background-color: #002945;
+  background-color: var(--secondary-bg-color);
   margin: 12px;
   border-radius: 4px;
 }
@@ -12,8 +12,8 @@
 .searchbar-container > span {
   display: flex;
   align-items: center;
-  background-color: #00111c;
-  color: #e5e5e5;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
   padding: 8px;
   border-radius: 4px;
 }
@@ -24,8 +24,8 @@
   line-height: 18px;
   border: none;
   margin-left: 4px;
-  background-color: #00111c;
-  color: #e5e5e5;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
 }
 
 .logout-button {
@@ -34,17 +34,19 @@
 }
 
 .dropdown-items-container {
-  background-color: #00111c;
+  background-color: var(--secondary-bg-color);
+  border: 1px soild var(--button-color);  
 }
 
 .dropdown-items {
   list-style-type: none;
   position: absolute;
   top: 65px;
-  background-color: #003a61;
+  background-color: var(--secondary-bg-color);
   padding: 15px;
   right: 15px;
   border-radius: 4px;
+  border: 1px soild var(--button-color);
 }
 
 .dropdown-items>li {

@@ -21,13 +21,13 @@ const UserFeed = ({ data, loading, active }) => {
         loading ? (
           <div>
             <PostCard dataToShow={data} />
-            <Loader />
+            <Loader width={"177px"} height={"177px"} strokeWidth={8}/>
           </div>
         ) : (
           <PostCard dataToShow={data} />
         )
       ) : loading ? (
-        <Loader />
+        <Loader width={"177px"} height={"177px"} strokeWidth={8}/>
       ) : (
         <PostCard active={active} dataToShow={data} />
       )}
