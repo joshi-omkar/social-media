@@ -18,9 +18,6 @@ const Feed = () => {
     dispatch(getAllPosts());
   }, []);
 
-  console.log(userInfo)
-  // console.log(user)
-
   useEffect(() => {
     setFilteredData(
       // allPosts?.filter(
