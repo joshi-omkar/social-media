@@ -9,12 +9,16 @@ const ProfileDropdown = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
+  const { userInfo } = useSelector((state) => state.auth);
   const handleOnLogout = (e) => {
     e.preventDefault();
     dispatch(handleLogout());
     navigate("/login");
   };
-  const { userInfo } = useSelector((state) => state.auth);
+  const handleOnClickProfile = (e) => {
+    e.preventDefault();
+    navigate(`/user/${userInfo._id}`);
+  };
 
   const handleShowDropdown = (e) => {
     e.preventDefault();
@@ -47,7 +51,7 @@ const ProfileDropdown = () => {
       <div className="dropdown-items-container">
         {showDropdown && (
           <ul className="dropdown-items">
-            <li>Profile</li>
+            <li onClick={handleOnClickProfile}>Profile</li>
             <li onClick={handleOnLogout}>Logout</li>
           </ul>
         )}

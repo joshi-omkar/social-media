@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Explore from "./pages/Explore/Explore";
 import Bookmark from "./pages/Bookmark/Bookmark";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
@@ -41,6 +42,15 @@ const App = () => {
           element={
             <RequireAuth>
               <Bookmark/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/user/:userId"
+          exact
+          element={
+            <RequireAuth>
+              <UserProfile/>
             </RequireAuth>
           }
         />
