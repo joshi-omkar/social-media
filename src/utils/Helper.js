@@ -105,3 +105,7 @@ export const b64ToBlob = (b64Data, contentType = '', sliceSize = 512) => {
     const blob = new Blob(byteArrays, { type: contentType });
     return blob;
 };
+
+export const getUserName = (email) => {
+    return email.substring(0, email.indexOf('@'));
+}

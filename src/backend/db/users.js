@@ -4,6 +4,19 @@ import { formatDate } from "../utils/authUtils";
  * User Database can be added here.
  * You can add default users of your wish with different attributes
  * */
+/**
+ * 
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571526/9_ydm5xq.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571526/8_hentfh.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/7_psig48.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/6_yhlawt.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/5_qh2nlv.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/4_fxsd5d.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/3_gepnpf.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/3_gepnpf.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/2_pbse3s.jpg
+ * https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/1_xy03cy.jpg
+ */
 
 export const users = [
   {
@@ -14,7 +27,7 @@ export const users = [
     bio: "Hey! I'm Omkar Joshi.",
     website: "https://github.com/johsi-omkar",
     profileAvatar:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
+      "https://res.cloudinary.com/diudzga1m/image/upload/v1688571526/9_ydm5xq.jpg",
     password: "123456",
     createdAt: "2022-08-01",
     updatedAt: formatDate(),
