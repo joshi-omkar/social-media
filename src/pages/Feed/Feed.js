@@ -10,7 +10,6 @@ const Feed = () => {
   const { allPosts, loading } = useSelector((state) => state.feed);
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [filteredData, setFilteredData] = useState([]);
   const [active, setActive] = useState("new");
 
@@ -33,7 +32,7 @@ const Feed = () => {
   return (
     <div className="feed">
       <CreatePost />
-      <div style={{width: '60%'}}>
+      <div className="feed-userfeedtab">
         <UserFeedTab active={active} setActive={setActive} />
       </div>
       <UserFeed active={active} loading={loading} data={filteredData} />

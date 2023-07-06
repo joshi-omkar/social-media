@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getUserPosts } from "./userAction";
+import { getAllUsers, getUser, getUserPosts } from "./userAction";
 
 const initialState = {
   loading: false,
@@ -7,6 +7,7 @@ const initialState = {
   success: false,
   users : [],
   userPosts: [],
+  user: [],
 };
 const userSlice = createSlice({
   name: "user",
@@ -28,7 +29,7 @@ const userSlice = createSlice({
       state.success = false;
       state.error = payload;
     });
-    //All Users 
+    //Get All Users 
     builder.addCase(getAllUsers.pending, (state) => {
       state.loading = true;
       state.success = false;
@@ -36,9 +37,26 @@ const userSlice = createSlice({
     builder.addCase(getAllUsers.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.users = payload;
+      console.log(1, payload)
       state.success = true;
     });
     builder.addCase(getAllUsers.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.error = payload;
+      console.log(2, payload)
+    });
+    //Get User  
+    builder.addCase(getUser.pending, (state) => {
+      state.loading = true;
+      state.success = false;
+    });
+    builder.addCase(getUser.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.user = payload;
+      state.success = true;
+    });
+    builder.addCase(getUser.rejected, (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.error = payload;

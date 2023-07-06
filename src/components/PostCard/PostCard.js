@@ -21,7 +21,6 @@ import ReportSVG from "../../assets/ReportSVG";
 import { addBookmark, removeBookmark } from "../../features/auth/authAction";
 import { getUserName } from "../../utils/Helper";
 import { TostMessage } from "../TostMessage/TostMessage";
-import UserCardOnHover from "../UserCardOnHover/UserCardOnHover";
 
 const SettingDropdown = ({
   showDropdown,
@@ -91,9 +90,6 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  // const [isLiked, setIsLiked] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isOnUserCard, setIsOnUserCard] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
@@ -139,6 +135,7 @@ export const Card = ({ data }) => {
     };
     dispatch(deletePost(postData, userToken));
   };
+
 
   return (
     <div className="post-card">
@@ -209,15 +206,10 @@ export const Card = ({ data }) => {
               {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
-                <p
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  className="post-card-username"
-                >
+                <p className="post-card-username">
                   {" "}
                   @{getUserName(data.email)}
                 </p>
-                <div>{isHovered && <UserCardOnHover data={userInfo} />}</div>
               </span>
               •<p>{time}</p>
             </div>
