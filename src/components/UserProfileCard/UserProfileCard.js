@@ -3,7 +3,6 @@ import "./UserProfileCard.css";
 import { getUserName } from "../../utils/Helper";
 
 const UserProfileCard = ({ data }) => {
-  console.log(data);
   return (
     <div className="user-container">
       <div className="user-cover-photo"></div>
@@ -11,11 +10,11 @@ const UserProfileCard = ({ data }) => {
         <img src={data.profileAvatar} alt={data.firstName} />
       </div>
       <div className="user-info">
-        <div>
+        <div className="user-name-username">
           <p className="user-firstname-lastname">
             {data.firstName} {data.lastName}
           </p>
-          <p className="user-username">{getUserName(data.email)}</p>
+          <p className="user-username">@{getUserName(data.email)}</p>
         </div>
         <div className="user-follow-unfollow">
           <span>

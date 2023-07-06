@@ -1,0 +1,34 @@
+.user-profile {
+  display: flex;
+  margin: 12px;
+  gap: 50px;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+.user-profile-left-side {
+  /* background-color: var(--secondary-bg-color); */
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  width: 60%;
+  /* margin: 12px; */
+}
+
+.user-filter-tabs {
+  width: 100%;
+}
+
+.user-posts {
+  background-color: var(--secondary-bg-color);
+}
+
+.user-profile-right-side {
+    position: relative;
+    top: 112px;
+  }
+
+.user-profile-right-side > div {
+  position: sticky;
+  top: 12px;
+}

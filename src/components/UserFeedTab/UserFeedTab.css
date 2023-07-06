@@ -1,47 +1,52 @@
-.userfeed-tab{
-    width: 60%;
-    height: 100px;
-    background-color: var(--secondary-bg-color);
-    padding: 15px;
-    margin: 12px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.userfeed-tab {
+  /* width: 60%; */
+  height: 100px;
+  background-color: var(--secondary-bg-color);
+  padding: 15px;
+
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.userfeed-tab >button{
-    width: 20%;
-    padding: 8px;
-    font-size: 16px;
-    color: var(--text-color);
-    border: 1px solid var(--button-color);
-    border-radius: 4px;
-    cursor: pointer;
+.userfeed-tab > button {
+  width: 20%;
+  padding: 8px;
+  font-size: 16px;
+  color: var(--text-color);
+  border: 1px solid var(--button-color);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.userfeed-tab-new{
-    background-color: var(--primary-bg-color);
+.userfeed-tab-new {
+  background-color: var(--primary-bg-color);
 }
 
-.userfeed-tab-new:hover{
-    background-color: var(--button-color);
+.userfeed-tab-new:hover {
+  background-color: var(--button-color);
 }
 
-.userfeed-tab-trending{
-    background-color: var(--primary-bg-color);
+.userfeed-tab-trending {
+  background-color: var(--primary-bg-color);
 }
 
-.userfeed-tab-trending:hover{
-    background-color: var(--button-color);
+.userfeed-tab-trending:hover {
+  background-color: var(--button-color);
+}
+
+.active-tab {
+  background-color: var(--button-color);
 }
 
 @media screen and (max-width: 720px) {
-    .userfeed-tab{
-        width: 96%;
-    }
-    .userfeed-tab >button{
-        width: 40%;
-        padding: 8px;
-    }
+  .userfeed-tab {
+    /* width: 96%; */
+    margin: 12px;
+  }
+  .userfeed-tab > button {
+    width: 40%;
+    padding: 8px;
+  }
 }

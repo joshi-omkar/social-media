@@ -16,7 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const guestData = {
-    email: "abc@gmail.com",
+    email: "omkarjoshi@gmail.com",
     password: "123456",
   };
 

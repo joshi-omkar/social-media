@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addBookmark,
   getBookmark,
+  getUserPosts,
   loginUser,
   registerUser,
   removeBookmark,
@@ -15,7 +16,7 @@ const initialState = {
   error: null,
   success: false,
   bookmarks: [],
-  // bookmarks: JSON.parse(localStorage.getItem("user"))?.bookmarks,
+  userPosts: []
 };
 
 const authSlice = createSlice({
@@ -114,6 +115,20 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = payload;
       TostMessage(payload, "error");
+    });
+    //get User Posts
+    builder.addCase(getUserPosts.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getUserPosts.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      console.log(payload)
+      state.userPosts = payload;
+    });
+    builder.addCase(getUserPosts.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.error = payload
+      console.log(payload)
     });
   },
 });

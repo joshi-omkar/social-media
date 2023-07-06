@@ -40,12 +40,23 @@
   justify-content: flex-start;
   gap: 6px;
   color: var(--text-color);
+  /* opacity: 0.5; */
 }
 
 .card-user-details > span {
   display: flex;
   gap: 4px;
   align-items: center;
+}
+
+.post-card-username {
+  cursor: pointer;
+  /* opacity: 0.5; */
+}
+
+
+.post-card-username:hover {
+  text-decoration: 1.5px underline var(--button-color);
 }
 
 .card-user-details > p {
@@ -91,12 +102,18 @@
   padding: 15px;
   right: 15px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .setting-dropdown-items > li {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .setting-dropdown-container {
