@@ -16,4 +16,5 @@ export const USERURL = {
   GetBookmarks: "api/users/bookmark",
   AddBookmark: "/api/users/bookmark",
   RemoveBookmark: "/api/users/remove-bookmark",
+  UserPost: "/api/posts/user"
 };

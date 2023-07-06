@@ -33,7 +33,9 @@ const Feed = () => {
   return (
     <div className="feed">
       <CreatePost />
-      <UserFeedTab active={active} setActive={setActive} />
+      <div style={{width: '60%'}}>
+        <UserFeedTab active={active} setActive={setActive} />
+      </div>
       <UserFeed active={active} loading={loading} data={filteredData} />
     </div>
   );

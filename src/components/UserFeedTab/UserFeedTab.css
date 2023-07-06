@@ -1,9 +1,9 @@
 .userfeed-tab{
-    width: 60%;
+    /* width: 60%; */
     height: 100px;
     background-color: var(--secondary-bg-color);
     padding: 15px;
-    margin: 12px;
+    /* margin: 12px; */
     border-radius: 4px;
     display: flex;
     justify-content: space-around;
@@ -33,6 +33,10 @@
 }
 
 .userfeed-tab-trending:hover{
+    background-color: var(--button-color);
+}
+
+.active-tab{
     background-color: var(--button-color);
 }
 
