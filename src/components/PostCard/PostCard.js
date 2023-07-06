@@ -15,8 +15,13 @@ import {
   likePost,
 } from "../../features/Feed/FeedAction";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../assets/loader";
+import EditSVG from "../../assets/EditSVG";
+import DeleteSVG from "../../assets/DeleteSVG";
+import ReportSVG from "../../assets/ReportSVG";
 import { addBookmark, removeBookmark } from "../../features/auth/authAction";
+import { getUserName } from "../../utils/Helper";
+import { TostMessage } from "../TostMessage/TostMessage";
+import UserCardOnHover from "../UserCardOnHover/UserCardOnHover";
 
 const SettingDropdown = ({
   showDropdown,
@@ -24,6 +29,7 @@ const SettingDropdown = ({
   outSideClickRef,
   setIsEdit,
   handleDeletePost,
+  isUser,
 }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,13 +53,32 @@ const SettingDropdown = ({
     setIsEdit(true);
   };
 
+  const handleClickOnReport = (e) => {
+    e.preventDefault();
+    TostMessage("This functionality will come soon!!", "info");
+  };
+
   return (
     <div className="setting-dropdown-container">
       <div className="setting-dropdown-items-container">
-        {showDropdown && (
+        {showDropdown && isUser && (
           <ul className="setting-dropdown-items">
-            <li onClick={handleClickOnEdit}>Edit</li>
-            <li onClick={handleDeletePost}>Delete</li>
+            <li onClick={handleClickOnEdit}>
+              <EditSVG />
+              Edit
+            </li>
+            <li onClick={handleDeletePost}>
+              <DeleteSVG />
+              Delete
+            </li>
+          </ul>
+        )}
+        {showDropdown && !isUser && (
+          <ul className="setting-dropdown-items">
+            <li onClick={handleClickOnReport}>
+              <ReportSVG />
+              Report
+            </li>
           </ul>
         )}
       </div>
@@ -66,23 +91,24 @@ export const Card = ({ data }) => {
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   // const [isLiked, setIsLiked] = useState(false);
-  // const [isDisliked, setIsDisliked] = useState(false);
-  // const [isBookMarked, setIsBookMarked] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isOnUserCard, setIsOnUserCard] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
   const [editPostData, setEditPostData] = useState({ content: data.content });
   const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const isLiked = data.likes.likedBy.some((item) => item._id === user?._id);
+  const isLiked = data.likes.likedBy.some((item) => item._id === userInfo?._id);
   const isDisliked = data.likes.dislikedBy.some(
-    (item) => item._id === user?._id
+    (item) => item._id === userInfo?._id
   );
   const isBookMarked = userInfo?.bookmarks.some(
     (item) => item._id === data._id
   );
+
+  const isUser = data?.email === userInfo?.email;
 
   useEffect(() => {
     if (isEdit && textareaRef.current) {
@@ -119,7 +145,6 @@ export const Card = ({ data }) => {
       {isEdit ? (
         <div className="edit-post-input">
           <textarea
-            // className="create-post-input-textarea"
             placeholder="Create a post"
             type="text"
             ref={textareaRef}
@@ -137,7 +162,7 @@ export const Card = ({ data }) => {
             }}
           >
             <button onClick={handleUpdate} className="edit-post-button">
-              Edit
+              <EditSVG /> Edit
             </button>
             <button
               onClick={handleUpdateCancle}
@@ -152,10 +177,9 @@ export const Card = ({ data }) => {
           <div className="right-side">
             <div style={{ cursor: "pointer" }}>
               <UpArrow
-                fill={isLiked ? "#ff2f56" : "#fff"}
+                fill={isLiked ? "#FF4668" : "#fff"}
                 onClick={(e) => {
                   e.preventDefault();
-
                   const postData = {
                     postId: data._id,
                   };
@@ -185,7 +209,15 @@ export const Card = ({ data }) => {
               {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
-                <p> @{data.email}</p>
+                <p
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  className="post-card-username"
+                >
+                  {" "}
+                  @{getUserName(data.email)}
+                </p>
+                <div>{isHovered && <UserCardOnHover data={userInfo} />}</div>
               </span>
               •<p>{time}</p>
             </div>
@@ -220,7 +252,6 @@ export const Card = ({ data }) => {
                   const postData = {
                     postId: data._id,
                   };
-                  // setIsBookMarked(!isBookMarked)
                   isBookMarked
                     ? dispatch(removeBookmark(postData))
                     : dispatch(addBookmark(postData));
@@ -244,6 +275,7 @@ export const Card = ({ data }) => {
                 outSideClickRef={outSideClickRef}
                 setIsEdit={setIsEdit}
                 handleDeletePost={handleDeletePost}
+                isUser={isUser}
               />
             )}
           </div>

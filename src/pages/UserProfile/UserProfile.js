@@ -12,16 +12,12 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const [active, setActive] = useState("new");
 
-  console.log(user, userPosts);
-
   useEffect(() => {
     const userData = {
       email: user.email,
     };
     dispatch(getUserPosts(userData));
   }, [user, success]);
-
-  console.log(userPosts);
 
   return (
     <div className="user-profile">

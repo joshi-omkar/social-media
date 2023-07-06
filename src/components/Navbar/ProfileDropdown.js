@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleLogout } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import ProfileSVG from "../../assets/ProfileSVG";
+import LogoutSVG from "../../assets/LogoutSVG";
 
 const ProfileDropdown = () => {
   const outSideClickRef = useRef(null);
@@ -44,15 +46,25 @@ const ProfileDropdown = () => {
 
   return (
     <div className="dropdown-container">
-      <div ref={outSideClickRef} onClick={handleShowDropdown}>
-        {userInfo?.firstName}
+      <div
+        className="dropdown-container-profile"
+        ref={outSideClickRef}
+        onClick={handleShowDropdown}
+      >
+        <img src={userInfo?.profileAvatar} alt={userInfo?.firstName} />
+        <label>{userInfo?.firstName}</label>
       </div>
 
       <div className="dropdown-items-container">
         {showDropdown && (
           <ul className="dropdown-items">
-            <li onClick={handleOnClickProfile}>Profile</li>
-            <li onClick={handleOnLogout}>Logout</li>
+            <li onClick={handleOnClickProfile}>
+              <ProfileSVG /> Profile
+            </li>
+            <li onClick={handleOnLogout}>
+              <LogoutSVG />
+              Logout
+            </li>
           </ul>
         )}
       </div>
