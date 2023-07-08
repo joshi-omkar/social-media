@@ -97,15 +97,15 @@ export const Card = ({ data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isLiked = data.likes.likedBy.some((item) => item._id === userInfo?._id);
+  const isLiked = data.likes.likedBy.some((item) => item === userInfo?._id);
   const isDisliked = data.likes.dislikedBy.some(
-    (item) => item._id === userInfo?._id
+    (item) => item === userInfo?._id
   );
   const isBookMarked = userInfo?.bookmarks.some(
-    (item) => item._id === data._id
+    (item) => item === data._id
   );
 
-  const isUser = data?.email === userInfo?.email;
+  const isUser = data?.username === userInfo?.username;
 
   useEffect(() => {
     if (isEdit && textareaRef.current) {
@@ -139,9 +139,8 @@ export const Card = ({ data }) => {
 
   const handleOnClickUsername = (e) => {
     e.preventDefault();
-    navigate(`/user/${data.email}`)
-  }
-
+    navigate(`/user/${data.username}`);
+  };
 
   return (
     <div className="post-card">
@@ -212,9 +211,12 @@ export const Card = ({ data }) => {
               {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
-                <p onClick={handleOnClickUsername} className="post-card-username">
+                <p
+                  onClick={handleOnClickUsername}
+                  className="post-card-username"
+                >
                   {" "}
-                  @{data.email}
+                  @{data.username}
                 </p>
               </span>
               •<p>{time}</p>

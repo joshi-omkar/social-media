@@ -9,10 +9,20 @@ import Loader from "../../assets/loader";
 
 const Bookmark = () => {
   const { loading, bookmarks } = useSelector((state) => state.auth);
+  const { allPosts } = useSelector((state) => state.feed);
+  const [bookmarkData, setBookmarkData] = useState([]);
 
   useEffect(() => {
     getBookmark();
   }, [bookmarks]);
+
+  useEffect(() => {
+    setBookmarkData(allPosts.filter((post) => bookmarks?.some((bookmark)=> post._id === bookmark)));
+  }, [bookmarks, allPosts]);
+
+  console.log(allPosts.filter((post) => console.log(post._id)))
+
+  console.log(bookmarks, bookmarkData);
 
   return (
     <div className="bookmark-page">
@@ -21,8 +31,8 @@ const Bookmark = () => {
           <Loader />
         ) : (
           <div className="bookmark">
-            {bookmarks.length === 0 && <h3>No Bookmarks</h3>}
-            {bookmarks?.map((bookmark, key) => {
+            {bookmarkData.length === 0 && <h3>No Bookmarks</h3>}
+            {bookmarkData?.map((bookmark, key) => {
               return <Card data={bookmark} key={key} />;
             })}
           </div>

@@ -96,7 +96,7 @@ const authSlice = createSlice({
     builder.addCase(addBookmark.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      // TostMessage(payload, "error");
+      TostMessage(payload, "error");
     });
     //remove bookmark
     builder.addCase(removeBookmark.pending, (state) => {});
@@ -122,13 +122,11 @@ const authSlice = createSlice({
     });
     builder.addCase(getUserPosts.fulfilled, (state, { payload }) => {
       state.loading = false;
-      console.log(payload)
       state.userPosts = payload;
     });
     builder.addCase(getUserPosts.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload
-      console.log(payload)
     });
   },
 });
