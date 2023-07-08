@@ -88,8 +88,8 @@ const feedSlice = createSlice({
     });
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       state.allPosts = payload;
-      // state.loading = false;
-      // state.success = true;
+      state.loading = false;
+      state.success = true;
       state.error = null;
       TostMessage("Post Liked!", "success");
     });

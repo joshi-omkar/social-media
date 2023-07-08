@@ -19,78 +19,61 @@ import axios from "axios";
 const UserProfile = () => {
   // const { userInfo, success } = useSelector((state) => state.auth);
   const { loading, userPosts, users } = useSelector((state) => state.user);
+  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [active, setActive] = useState("new");
   const [user, setUser] = useState(null);
   const [fakeLoading, setFakeLoading] = useState(false);
-  const { email } = useParams();
-
-  // console.log(email)
+  const { username } = useParams();
+  const [isUser, setIsUser] = useState(false)
 
   useEffect(() => {
     (async () => {
       try {
         setFakeLoading(true);
-        const response = await axios.get(`${USERURL.User}/${email}`);
-        console.log(response);
+        const response = await axios.get(`${USERURL.User}/${username}`);
         setUser(response.data.user);
-        // setIsCurrUser(currUser._id === response.data.user._id);
+        setIsUser(userInfo._id === response.data.user._id);
       } catch (err) {
         TostMessage(err.response.data, "error");
       } finally {
         setFakeLoading(false);
       }
     })();
-  }, [email]);
-
-  console.log(user);
-
-  // useEffect(()=>{
-  //   const userData = {
-  //     email : email
-  //   }
-  //   dispatch(getUser(userData))
-  // },[email])
-
-  // console.log(users)
-
-  const userData = users.find((user) => getUserName(user.email) === email);
+  }, [username]);
 
   useEffect(() => {
     dispatch(
       getUserPosts({
-        email: user?.email,
+        username: user?.username,
       })
     );
-  }, [user]);
-
-  // if (fakeLoading)
-  //   return <Loader width={"177px"} height={"177px"} strokeWidth={8} />;
+  }, [userPosts]);
 
   return (
     <>
       {/* {fakeLoading && ( */}
-        <div className="user-profile">
-          <div className="user-profile-left-side">
-            <div className="user-filter-tabs">
-              <UserFeedTab active={active} setActive={setActive} />
-            </div>
-            <div className="user-posts">
-              {fakeLoading && (
-                <Loader width={"177px"} height={"177px"} strokeWidth={8} />
-              )}
-              {!fakeLoading && (
-                <PostCard dataToShow={userPosts} active={active} />
-              )}
-            </div>
+      <div className="user-profile">
+        <div className="user-profile-left-side">
+          <div className="user-filter-tabs">
+            <UserFeedTab active={active} setActive={setActive} />
           </div>
-          <div className="user-profile-right-side">
+          <div className="user-posts">
             {fakeLoading && (
               <Loader width={"177px"} height={"177px"} strokeWidth={8} />
             )}
-            {!fakeLoading && <UserProfileCard data={user} />}
+            {!fakeLoading && (
+              <PostCard dataToShow={userPosts} active={active} />
+            )}
           </div>
         </div>
+        <div className="user-profile-right-side">
+          {fakeLoading && (
+            <Loader width={"177px"} height={"177px"} strokeWidth={8} />
+          )}
+          {!fakeLoading && <UserProfileCard isUser={isUser} data={user} />}
+        </div>
+      </div>
       {/* )} */}
     </>
   );

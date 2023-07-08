@@ -20,7 +20,7 @@ const ProfileDropdown = () => {
   };
   const handleOnClickProfile = (e) => {
     e.preventDefault();
-    navigate(`/user/${getUserName(userInfo.email)}`);
+    navigate(`/user/${userInfo.username}`);
   };
 
   const handleShowDropdown = (e) => {

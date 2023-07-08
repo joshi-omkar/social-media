@@ -19,15 +19,16 @@ const Feed = () => {
 
   useEffect(() => {
     setFilteredData(
-      // allPosts?.filter(
-      //   (post) =>
-      //   user?.followers?.some((item) => item?._id === post?.userId) ||
-      //   user?.following?.some((item) => item?._id === post?.userId) ||
-      //   user?._id === post?.userId
-      // )
-      allPosts
+      allPosts?.filter(
+        (post) =>
+        userInfo?.followers?.some((item) => item?.username === post?.username) ||
+        userInfo?.following?.some((item) => item?.username === post?.username) ||
+        userInfo?.username === post?.username
+      )
     );
   }, [allPosts, userInfo]);
+
+  console.log(userInfo)
 
   return (
     <div className="feed">

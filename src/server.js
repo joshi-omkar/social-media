@@ -44,8 +44,8 @@ export function makeServer({ environment = "development" } = {}) {
       users.forEach((item) =>
         server.create("user", {
           ...item,
-          followers: [],
-          following: [],
+          // followers: [],
+          // following: [],
           bookmarks: [],
         })
       );
@@ -61,7 +61,7 @@ export function makeServer({ environment = "development" } = {}) {
       // post routes (public)
       this.get("/posts", getAllpostsHandler.bind(this));
       this.get("/posts/:postId", getPostHandler.bind(this));
-      this.get("/posts/user/:email", getAllUserPostsHandler.bind(this));
+      this.get("/posts/user/:username", getAllUserPostsHandler.bind(this));
 
       // post routes (private)
       this.post("/posts", createPostHandler.bind(this));
@@ -72,7 +72,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));
-      this.get("/users/:email", getUserHandler.bind(this));
+      this.get("/users/:username", getUserHandler.bind(this));
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));

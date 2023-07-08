@@ -42,9 +42,9 @@ export const getPostHandler = function (schema, request) {
  * */
 
 export const getAllUserPostsHandler = function (schema, request) {
-  const { email } = request.params;
+  const { username } = request.params;
   try {
-    const posts = schema.posts.where({ email })?.models;
+    const posts = schema.posts.where({ username })?.models;
     return new Response(200, {}, { posts });
   } catch (error) {
     return new Response(
@@ -86,7 +86,7 @@ export const createPostHandler = function (schema, request) {
         likedBy: [],
         dislikedBy: [],
       },
-      email: user.email,
+      username: user.username,
       createdAt: formatDate(),
       updatedAt: formatDate(),
     };
@@ -125,7 +125,7 @@ export const editPostHandler = function (schema, request) {
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.email !== user.email) {
+    if (post.username !== user.username) {
       return new Response(
         400,
         {},
@@ -169,7 +169,9 @@ export const likePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.likes.likedBy.some((currUser) => currUser._id === user._id)) {
+    if (
+      post.likes.likedBy.some((currUser) => currUser.username === user.username)
+    ) {
       return new Response(
         400,
         {},
@@ -177,11 +179,11 @@ export const likePostHandler = function (schema, request) {
       );
     }
     post.likes.dislikedBy = post.likes.dislikedBy.filter(
-      (currUser) => currUser._id !== user._id
+      (currUser) => currUser.username !== user.username
     );
     post.likes.likeCount += 1;
     post.likes.likedBy.push(user);
-    this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
+    this.db.posts.update({ _id: postId }, { ...post });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(
@@ -222,7 +224,11 @@ export const dislikePostHandler = function (schema, request) {
         { errors: ["Cannot decrement like less than 0."] }
       );
     }
-    if (post.likes.dislikedBy.some((currUser) => currUser._id === user._id)) {
+    if (
+      post.likes.dislikedBy.some(
+        (currUser) => currUser.username === user.username
+      )
+    ) {
       return new Response(
         400,
         {},
@@ -231,11 +237,12 @@ export const dislikePostHandler = function (schema, request) {
     }
     post.likes.likeCount -= 1;
     const updatedLikedBy = post.likes.likedBy.filter(
-      (currUser) => currUser._id !== user._id
+      (currUser) => currUser.username !== user.username
     );
+    // console.log(updatedLikedBy);
     post.likes.dislikedBy.push(user);
     post = { ...post, likes: { ...post.likes, likedBy: updatedLikedBy } };
-    this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
+    this.db.posts.update({ _id: postId }, { ...post });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(

@@ -2,7 +2,7 @@ import React from "react";
 import "./UserProfileCard.css";
 import { getUserName } from "../../utils/Helper";
 
-const UserProfileCard = ({ data }) => {
+const UserProfileCard = ({ data, isUser }) => {
   return (
     <div className="user-container">
       <div className="user-cover-photo"></div>
@@ -14,7 +14,7 @@ const UserProfileCard = ({ data }) => {
           <p className="user-firstname-lastname">
             {data?.firstName} {data?.lastName}
           </p>
-          <p className="user-username">@{data?.email}</p>
+          <p className="user-username">@{data?.username}</p>
         </div>
         <div className="user-follow-unfollow">
           <span>
