@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import ProfileSVG from "../../assets/ProfileSVG";
 import LogoutSVG from "../../assets/LogoutSVG";
+import { getUserName } from "../../utils/Helper";
 
 const ProfileDropdown = () => {
   const outSideClickRef = useRef(null);
@@ -19,7 +20,7 @@ const ProfileDropdown = () => {
   };
   const handleOnClickProfile = (e) => {
     e.preventDefault();
-    navigate(`/user/${userInfo._id}`);
+    navigate(`/user/${getUserName(userInfo.email)}`);
   };
 
   const handleShowDropdown = (e) => {

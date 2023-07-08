@@ -23,7 +23,6 @@ export const getAllUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${USERURL.AllUsers}`);
-      console.log(response)
       return response.data.users;
     } catch (error) {
       if (error.response && error.response.data.errors) {
@@ -38,8 +37,10 @@ export const getAllUsers = createAsyncThunk(
 export const getUser = createAsyncThunk(
   "user/getUser",
   async (userData, { rejectWithValue }) => {
+    console.log(1)
+    console.log(userData)
     try {
-      const response = await axios.get(`${USERURL.User}/${userData.userId}`);
+      const response = await axios.get(`${USERURL.User}/${userData.email}`);
       console.log(response)
       return response.data;
     } catch (error) {
