@@ -1,6 +1,6 @@
 import "./PostCard.css";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CommentSVG from "../../assets/Comment";
 import Bookmark from "../../assets/Bookmark";
 import UpArrow from "../../assets/UpArrow";
@@ -95,6 +95,7 @@ export const Card = ({ data }) => {
   const [editPostData, setEditPostData] = useState({ content: data.content });
   const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isLiked = data.likes.likedBy.some((item) => item._id === userInfo?._id);
   const isDisliked = data.likes.dislikedBy.some(
@@ -135,6 +136,11 @@ export const Card = ({ data }) => {
     };
     dispatch(deletePost(postData, userToken));
   };
+
+  const handleOnClickUsername = (e) => {
+    e.preventDefault();
+    navigate(`/user/${data.email}`)
+  }
 
 
   return (
@@ -206,9 +212,9 @@ export const Card = ({ data }) => {
               {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
-                <p className="post-card-username">
+                <p onClick={handleOnClickUsername} className="post-card-username">
                   {" "}
-                  @{getUserName(data.email)}
+                  @{data.email}
                 </p>
               </span>
               •<p>{time}</p>

@@ -46,7 +46,7 @@ const App = () => {
           }
         />
         <Route
-          path="/user/:userId"
+          path="/user/:email"
           exact
           element={
             <RequireAuth>
