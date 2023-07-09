@@ -145,3 +145,49 @@ export const getUserPosts = createAsyncThunk(
     }
   }
 );
+
+export const userFollow = createAsyncThunk(
+  "user/userFollow",
+  async (userInfo , { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.post(`${USERURL.UserFollow}/${userInfo.followUserId}/`,{}, config);
+      console.log(response.data.user)
+      return response.data.user;
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0]);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const userUnfollow = createAsyncThunk(
+  "user/userUnfollow",
+  async ( userInfo , { rejectWithValue }) => {
+    console.log(userInfo)
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.post(`${USERURL.UserUnfollow}/${userInfo.followUserId}`,{}, config);
+      return response.data.user;
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0]);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

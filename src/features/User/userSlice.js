@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getUser, getUserPosts } from "./userAction";
+import {
+  getAllUsers,
+  getUser,
+  getUserPosts,
+  userFollow,
+  userUnfollow,
+} from "./userAction";
+import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
   loading: false,
   error: null,
   success: false,
-  users : [],
+  users: [],
   userPosts: [],
   user: [],
 };
@@ -29,7 +36,7 @@ const userSlice = createSlice({
       state.success = false;
       state.error = payload;
     });
-    //Get All Users 
+    //Get All Users
     builder.addCase(getAllUsers.pending, (state) => {
       state.loading = true;
       state.success = false;
@@ -44,7 +51,7 @@ const userSlice = createSlice({
       state.success = false;
       state.error = payload;
     });
-    //Get User  
+    //Get User
     builder.addCase(getUser.pending, (state) => {
       state.loading = true;
       state.success = false;

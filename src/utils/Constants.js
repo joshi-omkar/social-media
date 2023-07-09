@@ -18,5 +18,7 @@ export const USERURL = {
   RemoveBookmark: "/api/users/remove-bookmark",
   UserPost: "/api/posts/user",
   AllUsers: '/api/users',
-  User: '/api/users'
+  User: '/api/users',
+  UserFollow: '/api/users/follow',
+  UserUnfollow: '/api/users/unfollow',
 };

@@ -6,6 +6,8 @@ import {
   loginUser,
   registerUser,
   removeBookmark,
+  userFollow,
+  userUnfollow,
 } from "./authAction";
 import { TostMessage } from "../../components/TostMessage/TostMessage";
 
@@ -16,7 +18,7 @@ const initialState = {
   error: null,
   success: false,
   bookmarks: [],
-  userPosts: []
+  userPosts: [],
 };
 
 const authSlice = createSlice({
@@ -79,8 +81,8 @@ const authSlice = createSlice({
     });
     builder.addCase(getBookmark.rejected, (state, { payload }) => {
       state.loading = false;
-      state.error = payload
-      console.log(payload)
+      state.error = payload;
+      console.log(payload);
     });
     // add bookmark
     builder.addCase(addBookmark.pending, (state) => {});
@@ -126,7 +128,45 @@ const authSlice = createSlice({
     });
     builder.addCase(getUserPosts.rejected, (state, { payload }) => {
       state.loading = false;
-      state.error = payload
+      state.error = payload;
+    });
+    //Follow User
+    builder.addCase(userFollow.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.success = false;
+    });
+    builder.addCase(userFollow.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.error = null;
+      state.userInfo = payload;
+      TostMessage("Followed!", "success");
+    });
+    builder.addCase(userFollow.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.error = payload;
+      TostMessage(payload, "error");
+    });
+    //Unfollow User
+    builder.addCase(userUnfollow.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.success = false;
+    });
+    builder.addCase(userUnfollow.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.error = null;
+      state.userInfo = payload;
+      TostMessage("Unfollowed!", "success");
+    });
+    builder.addCase(userUnfollow.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.error = payload;
+      TostMessage(payload, "error");
     });
   },
 });

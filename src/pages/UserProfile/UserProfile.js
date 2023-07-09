@@ -33,7 +33,7 @@ const UserProfile = () => {
         setFakeLoading(true);
         const response = await axios.get(`${USERURL.User}/${username}`);
         setUser(response.data.user);
-        setIsUser(userInfo._id === response.data.user._id);
+        setIsUser(userInfo.username === response.data.user.username);
       } catch (err) {
         TostMessage(err.response.data, "error");
       } finally {
@@ -48,7 +48,7 @@ const UserProfile = () => {
         username: user?.username,
       })
     );
-  }, [userPosts]);
+  }, []);
 
   return (
     <>
