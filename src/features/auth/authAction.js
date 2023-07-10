@@ -4,7 +4,7 @@ import { AUTHURL, USERURL } from "../../utils/Constants";
 
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async ({ firstName, lastName, email, password }, { rejectWithValue }) => {
+  async ({ firstName, lastName, email, password, username, profileAvatar }, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk(
       };
       const response = await axios.post(
         AUTHURL.Signup,
-        { firstName, lastName, email, password },
+        { firstName, lastName, email, password, username, profileAvatar },
         config
       );
       return response.data;

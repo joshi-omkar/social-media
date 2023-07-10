@@ -105,8 +105,13 @@ export const getUrlName = (url) => {
 };
 
 const capitalize = ([first, ...rest], lowerRest = false) =>
-  first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+  first.toUpperCase() +
+  (lowerRest ? rest.join("").toLowerCase() : rest.join(""));
 
+export const getRandomAvatar = (userAvatars) => {
+  const randomIndex = Math.floor(Math.random() * userAvatars.length);
+  return userAvatars[randomIndex];
+};
 
 export const b64ToBlob = (b64Data, contentType = "", sliceSize = 512) => {
   const byteCharacters = atob(b64Data);

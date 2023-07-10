@@ -13,21 +13,23 @@ const UserFeed = ({ data, loading, active }) => {
     else setPath(false);
   }, [location.pathname]);
 
-  
-
   return (
     <div className="userfeed">
       {path ? (
         loading ? (
           <div>
             <PostCard dataToShow={data} />
-            <Loader width={"177px"} height={"177px"} strokeWidth={8}/>
+            <Loader width={"177px"} height={"177px"} strokeWidth={8} />
           </div>
         ) : (
           <PostCard dataToShow={data} />
         )
       ) : loading ? (
-        <Loader width={"177px"} height={"177px"} strokeWidth={8}/>
+        <Loader width={"177px"} height={"177px"} strokeWidth={8} />
+      ) : data.length === 0 ? (
+        <div style={{padding: '12px', textAlign: 'center', fontSize: '2rem'}}>
+          <p>Just Explore!</p>
+        </div>
       ) : (
         <PostCard active={active} dataToShow={data} />
       )}

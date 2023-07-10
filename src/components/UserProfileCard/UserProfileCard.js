@@ -165,12 +165,17 @@ const UserProfileCard = ({ data, isUser }) => {
           </span>
         </div>
         <div className="user-bio-links">
-          <span style={{display: 'flex', gap: '4px'}}>
-            <p style={{fontWeight: 700, }}>{data?.bio}</p>
+          <span style={{ display: "flex", gap: "4px" }}>
+            <p style={{ fontWeight: 700 }}>{data?.bio}</p>
           </span>
-          <Link style={{color: '#1A8CD8'}} to={data?.website}>
-            <p style={{display: 'flex', gap: '2px'}}><UrlSVG/>{getUrlName(data?.website)}</p>
-          </Link>
+          {data?.website.length !== 0 && (
+            <Link style={{ color: "#1A8CD8" }} to={data?.website}>
+              <p style={{ display: "flex", gap: "2px" }}>
+                <UrlSVG />
+                {getUrlName(data?.website)}
+              </p>
+            </Link>
+          )}
         </div>
         {!isUser && (
           <div>

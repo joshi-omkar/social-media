@@ -59,10 +59,10 @@ const UserProfile = () => {
             <UserFeedTab active={active} setActive={setActive} />
           </div>
           <div className="user-posts">
-            {fakeLoading && (
+            {loading && (
               <Loader width={"177px"} height={"177px"} strokeWidth={8} />
             )}
-            {!fakeLoading && (
+            {!loading && (
               <PostCard dataToShow={userPosts} active={active} />
             )}
           </div>

@@ -42,9 +42,9 @@ const authSlice = createSlice({
     builder.addCase(registerUser.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.success = true;
-      state.userInfo = payload.foundUser;
+      state.userInfo = payload.createdUser;
       state.userToken = payload.encodedToken;
-      localStorage.setItem("user", JSON.stringify(payload.foundUser));
+      localStorage.setItem("user", JSON.stringify(payload.createdUser));
       TostMessage("Succesfully Created Account!", "success");
     });
     builder.addCase(registerUser.rejected, (state, { payload }) => {
