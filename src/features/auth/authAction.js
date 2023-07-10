@@ -191,3 +191,26 @@ export const userUnfollow = createAsyncThunk(
     }
   }
 );
+
+export const userEdit = createAsyncThunk(
+  "user/useerEdit",
+  async ( userData , { rejectWithValue }) => {
+    console.log(userData)
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const response = await axios.post(`${USERURL.UserEdit}/`,{userData}, config);
+      return response.data.user;
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        return rejectWithValue(error.response.data.errors[0]);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

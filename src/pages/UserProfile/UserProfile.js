@@ -40,7 +40,7 @@ const UserProfile = () => {
         setFakeLoading(false);
       }
     })();
-  }, [username]);
+  }, [username, userInfo]);
 
   useEffect(() => {
     dispatch(
@@ -48,7 +48,7 @@ const UserProfile = () => {
         username: user?.username,
       })
     );
-  }, []);
+  }, [user]);
 
   return (
     <>

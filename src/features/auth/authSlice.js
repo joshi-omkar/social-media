@@ -6,6 +6,7 @@ import {
   loginUser,
   registerUser,
   removeBookmark,
+  userEdit,
   userFollow,
   userUnfollow,
 } from "./authAction";
@@ -163,6 +164,26 @@ const authSlice = createSlice({
       TostMessage("Unfollowed!", "success");
     });
     builder.addCase(userUnfollow.rejected, (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.error = payload;
+      TostMessage(payload, "error");
+    });
+    //User Edit
+    builder.addCase(userEdit.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.success = false;
+    });
+    builder.addCase(userEdit.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.error = null;
+      state.userInfo = payload;
+      console.log(payload)
+      TostMessage("Data changed successfully!", "success");
+    });
+    builder.addCase(userEdit.rejected, (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.error = payload;

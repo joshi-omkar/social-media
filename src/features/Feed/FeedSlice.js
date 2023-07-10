@@ -1,10 +1,19 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { addPost, deletePost, disLikePost, editPost, getAllPosts, likePost } from "./FeedAction";
+import {
+  addPost,
+  deletePost,
+  disLikePost,
+  editPost,
+  getAllPosts,
+  getIndividualPost,
+  likePost,
+} from "./FeedAction";
 import { TostMessage } from "../../components/TostMessage/TostMessage";
 
 const initialState = {
   loading: false,
   allPosts: [],
+  post: [],
   error: null,
   success: false,
 };
@@ -12,8 +21,7 @@ const initialState = {
 const feedSlice = createSlice({
   name: "feed",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     //get all posts
     builder.addCase(getAllPosts.pending, (state) => {
@@ -84,8 +92,7 @@ const feedSlice = createSlice({
       TostMessage(payload, "error");
     });
     //like post
-    builder.addCase(likePost.pending, (state) => {
-    });
+    builder.addCase(likePost.pending, (state) => {});
     builder.addCase(likePost.fulfilled, (state, { payload }) => {
       state.allPosts = payload;
       state.loading = false;
@@ -100,8 +107,7 @@ const feedSlice = createSlice({
       TostMessage(payload, "error");
     });
     //dislike post
-    builder.addCase(disLikePost.pending, (state) => {
-    });
+    builder.addCase(disLikePost.pending, (state) => {});
     builder.addCase(disLikePost.fulfilled, (state, { payload }) => {
       state.allPosts = payload;
       state.loading = false;
@@ -112,6 +118,19 @@ const feedSlice = createSlice({
     builder.addCase(disLikePost.rejected, (state, { payload }) => {
       state.loading = false;
       state.success = false;
+      state.error = payload;
+      TostMessage(payload, "error");
+    });
+    //Individual Post
+    builder.addCase(getIndividualPost.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getIndividualPost.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.post = payload;
+    });
+    builder.addCase(getIndividualPost.rejected, (state, { payload }) => {
+      state.loading = false;
       state.error = payload;
       TostMessage(payload, "error");
     });

@@ -86,24 +86,22 @@ const SettingDropdown = ({
 };
 
 export const Card = ({ data }) => {
-  const time = moment(data.createdAt).fromNow();
+  const time = moment(data?.createdAt).fromNow();
   const [fill, setFill] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
-  const [editPostData, setEditPostData] = useState({ content: data.content });
+  const [editPostData, setEditPostData] = useState({ content: data?.content });
   const { userToken, userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isLiked = data.likes.likedBy.some((item) => item === userInfo?._id);
-  const isDisliked = data.likes.dislikedBy.some(
+  const isLiked = data?.likes?.likedBy.some((item) => item === userInfo?._id);
+  const isDisliked = data?.likes?.dislikedBy.some(
     (item) => item === userInfo?._id
   );
-  const isBookMarked = userInfo?.bookmarks.some(
-    (item) => item === data._id
-  );
+  const isBookMarked = userInfo?.bookmarks.some((item) => item === data?._id);
 
   const isUser = data?.username === userInfo?.username;
 
@@ -119,7 +117,7 @@ export const Card = ({ data }) => {
     setIsEdit(false);
     const postData = {
       postData: editPostData,
-      postId: data._id,
+      postId: data?._id,
     };
     dispatch(editPost(postData, userToken));
   };
@@ -132,14 +130,14 @@ export const Card = ({ data }) => {
   const handleDeletePost = (e) => {
     e.preventDefault();
     const postData = {
-      postId: data._id,
+      postId: data?._id,
     };
     dispatch(deletePost(postData, userToken));
   };
 
   const handleOnClickUsername = (e) => {
     e.preventDefault();
-    navigate(`/user/${data.username}`);
+    navigate(`/user/${data?.username}`);
   };
 
   return (
@@ -183,14 +181,14 @@ export const Card = ({ data }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   const postData = {
-                    postId: data._id,
+                    postId: data?._id,
                   };
                   dispatch(likePost(postData));
                 }}
               />
             </div>
             <label style={{ marginLeft: "4px", marginBottom: "2px" }}>
-              {data.likes.likeCount}
+              {data?.likes?.likeCount}
             </label>
             <div style={{ cursor: "pointer" }}>
               <DownArrow
@@ -199,7 +197,7 @@ export const Card = ({ data }) => {
                   e.preventDefault();
 
                   const postData = {
-                    postId: data._id,
+                    postId: data?._id,
                   };
                   dispatch(disLikePost(postData));
                 }}
@@ -216,20 +214,22 @@ export const Card = ({ data }) => {
                   className="post-card-username"
                 >
                   {" "}
-                  @{data.username}
+                  @{data?.username}
                 </p>
               </span>
               •<p>{time}</p>
             </div>
-            <div className="post-details">
-              <h3>{data.content}</h3>
-              {/* <span>
+            <Link to={`/posts/${data?._id}`}>
+              <div className="post-details">
+                <h3>{data?.content}</h3>
+                {/* <span>
             {data.tags.map((tag, key) => {
               return <div key={key}>{tag}</div>;
             })}
           </span> */}
-              {/* <p>{data.postDescription}</p> */}
-            </div>
+                {/* <p>{data.postDescription}</p> */}
+              </div>
+            </Link>
             <div
               style={{
                 width: "100%",
@@ -239,7 +239,7 @@ export const Card = ({ data }) => {
               }}
             ></div>
             <div className="card-left-lowerpart">
-              <Link to={`/comments/${data.postId}`}>
+              <Link to={`/posts/${data?._id}`}>
                 <CommentSVG />
               </Link>
               <div style={{ cursor: "pointer" }}>
@@ -250,7 +250,7 @@ export const Card = ({ data }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   const postData = {
-                    postId: data._id,
+                    postId: data?._id,
                   };
                   isBookMarked
                     ? dispatch(removeBookmark(postData))
