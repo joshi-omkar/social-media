@@ -10,6 +10,7 @@ const CreatePost = () => {
   const { userToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [newPostData, setNewPostData] = useState({ content: "" });
+  const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const outSideClickRef = useRef(null);
   const textareaRef = useRef(null);
@@ -28,12 +29,16 @@ const CreatePost = () => {
 
   const handlePost = (e) => {
     e.preventDefault();
-    const data = {
-      postData: newPostData,
-    };
-    dispatch(addPost(data, userToken));
-    if (allData) {
-      setNewPostData({ content: "" });
+    if (newPostData.content.length === 0) {
+      setMessage("please write something!");
+    } else {
+      const data = {
+        postData: newPostData,
+      };
+      dispatch(addPost(data, userToken));
+      if (success) {
+        setNewPostData({ content: "" });
+      }
     }
   };
 
@@ -67,7 +72,7 @@ const CreatePost = () => {
         <textarea
           style={
             isOpen
-              ? { display: "block", width: "50%", height: "80px" }
+              ? { display: "block", width: "50%", height: "60px" }
               : { display: "none" }
           }
           className="create-post-input-textarea"
@@ -79,8 +84,22 @@ const CreatePost = () => {
             setNewPostData({ content: e.target.value });
           }}
         />
+
+        {/* <p
+          style={
+            newPostData.content.length === 0
+              ? { display: "block", color: "#FF0000", marginTop: "4px" }
+              : { display: "none" }
+          }
+        >
+          {message}
+        </p> */}
       </div>
-      <button onClick={handlePost} className="create-post-button">
+      <button
+        disabled={newPostData.content.length === 0}
+        onClick={handlePost}
+        className="create-post-button"
+      >
         Post
       </button>
     </div>

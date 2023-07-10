@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Explore from "./pages/Explore/Explore";
 import Bookmark from "./pages/Bookmark/Bookmark";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import IndividualPost from "./pages/IndividualPost/IndividualPost";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
@@ -51,6 +52,15 @@ const App = () => {
           element={
             <RequireAuth>
               <UserProfile/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/posts/:postId"
+          exact
+          element={
+            <RequireAuth>
+              <IndividualPost/>
             </RequireAuth>
           }
         />

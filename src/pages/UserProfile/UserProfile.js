@@ -33,14 +33,14 @@ const UserProfile = () => {
         setFakeLoading(true);
         const response = await axios.get(`${USERURL.User}/${username}`);
         setUser(response.data.user);
-        setIsUser(userInfo._id === response.data.user._id);
+        setIsUser(userInfo.username === response.data.user.username);
       } catch (err) {
         TostMessage(err.response.data, "error");
       } finally {
         setFakeLoading(false);
       }
     })();
-  }, [username]);
+  }, [username, userInfo]);
 
   useEffect(() => {
     dispatch(
@@ -48,7 +48,7 @@ const UserProfile = () => {
         username: user?.username,
       })
     );
-  }, [userPosts]);
+  }, [user]);
 
   return (
     <>
@@ -59,10 +59,10 @@ const UserProfile = () => {
             <UserFeedTab active={active} setActive={setActive} />
           </div>
           <div className="user-posts">
-            {fakeLoading && (
+            {loading && (
               <Loader width={"177px"} height={"177px"} strokeWidth={8} />
             )}
-            {!fakeLoading && (
+            {!loading && (
               <PostCard dataToShow={userPosts} active={active} />
             )}
           </div>

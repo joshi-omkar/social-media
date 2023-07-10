@@ -1,67 +1,166 @@
-.user-container{
-    display: flex;
-    width: 400px;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid var(--text-color) !important;
-    padding: 20px;
-    background-color: var(--secondary-bg-color);
-    border-radius: 4px;
-    gap: 12px;
+.user-container {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--text-color) !important;
+  padding: 20px;
+  background-color: var(--secondary-bg-color);
+  border-radius: 4px;
+  gap: 12px;
 }
 
-.user-profile-img > img{
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
+.user-profile-img > img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
 
-.user-info{
-    width: 315px;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    /* padding: 12px; */
-    gap: 24px;
+.user-info {
+  width: 315px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* padding: 12px; */
+  gap: 24px;
 }
 
-.user-name-username{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 12px; */
+.user-name-username {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 12px; */
 }
 
-.user-username{
-    opacity: 0.5;
+.user-username {
+  opacity: 0.5;
 }
 
-.user-info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.user-follow-unfollow{
-    width: 270px;
-    display: flex;
-    justify-content: space-between;
-    /* padding: 12px; */
+.user-follow-unfollow {
+  width: 270px;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 12px; */
 }
 
-.user-follow-unfollow>span{
-    width: 110px;
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--primary-bg-color);
-    padding: 6px;
-    border-radius: 4px;
+.user-follow-unfollow > span {
+  width: 110px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-bg-color);
+  padding: 6px;
+  border-radius: 4px;
 }
 
-.user-bio-links{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+.user-bio-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.user-unfollow {
+  padding: 15px;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  border: 1.5px solid var(--button-color);
+  cursor: pointer;
+}
+
+.user-follow {
+  padding: 15px;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  border: 1.5px solid var(--button-color);
+  cursor: pointer;
+}
+
+.user-unfollow:hover {
+  background-color: var(--button-color);
+}
+
+.user-follow:hover {
+  background-color: var(--button-color);
+}
+
+.user-edit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-edit > svg {
+  cursor: pointer;
+}
+
+.user-edit-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--text-color);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.user-edit-img-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.user-edit-img-container >div> img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  flex: 0 1 20%;
+  cursor: pointer;
+}
+
+.user-edit-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-edit-info-container > span > input {
+  width: 350px;
+  padding: 8px;
+  /* margin-bottom: 12px; */
+  margin-top: 2px;
+  font-size: 0.9rem;
+}
+
+.user-edit-button-container{
+  display: flex;
+  gap: 20px;
+}
+
+.noshowmask{
+  display: none;
+}
+
+.showmask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
 }

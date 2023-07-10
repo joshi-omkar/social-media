@@ -41,6 +41,15 @@ export const users = [
         username: "archisdhakne",
         profileAvatar: "https://avatars.githubusercontent.com/u/36763315?v=4",
       },
+      {
+        _id: uuid(),
+        firstName: "Om",
+        lastName: "Gaikwad",
+        email: "omgaikwad@gmail.com",
+        username: "omgaikwad",
+        profileAvatar:
+          "https://media.licdn.com/dms/image/D5603AQH4CjoVxLewyA/profile-displayphoto-shrink_400_400/0/1686765403158?e=1692230400&v=beta&t=TD2bZvpcrwyQ_xRFJWcKGrdedAU3zbyss3ygheSSveA",
+      },
     ],
     following: [
       {
@@ -50,6 +59,15 @@ export const users = [
         email: "archisdhakne@gmail.com",
         username: "archisdhakne",
         profileAvatar: "https://avatars.githubusercontent.com/u/36763315?v=4",
+      },
+      {
+        _id: uuid(),
+        firstName: "Om",
+        lastName: "Gaikwad",
+        email: "omgaikwad@gmail.com",
+        username: "omgaikwad",
+        profileAvatar:
+          "https://media.licdn.com/dms/image/D5603AQH4CjoVxLewyA/profile-displayphoto-shrink_400_400/0/1686765403158?e=1692230400&v=beta&t=TD2bZvpcrwyQ_xRFJWcKGrdedAU3zbyss3ygheSSveA",
       },
     ],
   },

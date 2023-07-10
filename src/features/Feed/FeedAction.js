@@ -153,3 +153,19 @@ export const disLikePost = createAsyncThunk(
     }
   }
 );
+
+export const getIndividualPost = createAsyncThunk(
+  "api/getIndividualPost",
+  async (postData, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${POSTURL.IndividualPost}/${postData.postId}`);
+      return response.data.post;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

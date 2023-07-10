@@ -3,7 +3,7 @@ import "./Signup.css";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../features/auth/authAction";
 import Loader from "../../assets/loader";
-import { verifyEmail, verifyLength, verifyName } from "../../utils/Helper";
+import { getUserName, verifyEmail, verifyLength, verifyName, getRandomAvatar } from "../../utils/Helper";
 import { Link, useNavigate } from "react-router-dom";
 import { CloseEye, OpenEye } from "../../assets/Eyes";
 
@@ -23,6 +23,18 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  const userAvatars = [
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571526/9_ydm5xq.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571526/8_hentfh.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/7_psig48.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/6_yhlawt.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/5_qh2nlv.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/4_fxsd5d.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/3_gepnpf.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/2_pbse3s.jpg",
+    "https://res.cloudinary.com/diudzga1m/image/upload/v1688571527/1_xy03cy.jpg",
+  ];
+
   const handleOnSignUp = (e) => {
     e.preventDefault();
     const data = {
@@ -30,6 +42,8 @@ const Signup = () => {
       lastName: user.lastName,
       email: user.email,
       password: user.password,
+      username: getUserName(user.email),
+      profileAvatar: getRandomAvatar(userAvatars)
     };
 
     if (
@@ -42,7 +56,6 @@ const Signup = () => {
     } else {
       setErrorMsg("Please fill information correctly");
     }
-
     if (error === "Request failed with status code 422") {
       setErrorMsg("User Already Present!, try login..");
     }
