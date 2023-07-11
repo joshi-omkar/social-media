@@ -43,7 +43,7 @@
 @media screen and (max-width: 720px) {
   .userfeed-tab {
     /* width: 96%; */
-    margin: 12px;
+    /* margin: 12px; */
   }
   .userfeed-tab > button {
     width: 40%;
