@@ -129,13 +129,11 @@ export const removeBookmark = createAsyncThunk(
 export const getUserPosts = createAsyncThunk(
   "auth/getUserPosts",
   async (userData, { rejectWithValue }) => {
-    console.log(userData);
     try {
       const response = await axios.get(
         `${USERURL.UserPost}/${userData.username}`
       );
-      console.log(response);
-      return response.data;
+      return response.data.posts;
     } catch (error) {
       if (error.response && error.response.data.errors) {
         return rejectWithValue(error.response.data.errors[0]);
@@ -157,7 +155,6 @@ export const userFollow = createAsyncThunk(
         },
       };
       const response = await axios.post(`${USERURL.UserFollow}/${userInfo.followUserId}/`,{}, config);
-      console.log(response.data.user)
       return response.data.user;
     } catch (error) {
       if (error.response && error.response.data.errors) {
@@ -172,7 +169,6 @@ export const userFollow = createAsyncThunk(
 export const userUnfollow = createAsyncThunk(
   "user/userUnfollow",
   async ( userInfo , { rejectWithValue }) => {
-    console.log(userInfo)
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -195,7 +191,6 @@ export const userUnfollow = createAsyncThunk(
 export const userEdit = createAsyncThunk(
   "user/useerEdit",
   async ( userData , { rejectWithValue }) => {
-    console.log(userData)
     try {
       const token = localStorage.getItem("token");
       const config = {

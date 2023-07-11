@@ -20,10 +20,6 @@ const Bookmark = () => {
     setBookmarkData(allPosts.filter((post) => bookmarks?.some((bookmark)=> post._id === bookmark)));
   }, [bookmarks, allPosts]);
 
-  console.log(allPosts.filter((post) => console.log(post._id)))
-
-  console.log(bookmarks, bookmarkData);
-
   return (
     <div className="bookmark-page">
       <div className="bookmark-container">
