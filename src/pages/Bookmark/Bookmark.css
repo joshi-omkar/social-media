@@ -23,3 +23,12 @@
   flex-direction: column;
   gap: 12px;
 }
+
+@media only screen and (max-width: 720px) {
+  .bookmark-container {
+    width: 100%;
+  }
+  .bookmark-page {
+    margin: 12px;
+  }
+}

@@ -25,7 +25,7 @@ const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [fakeLoading, setFakeLoading] = useState(false);
   const { username } = useParams();
-  const [isUser, setIsUser] = useState(false)
+  const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -48,11 +48,10 @@ const UserProfile = () => {
         username: user?.username,
       })
     );
-  }, [user]);
+  }, [username]);
 
   return (
     <>
-      {/* {fakeLoading && ( */}
       <div className="user-profile">
         <div className="user-profile-left-side">
           <div className="user-filter-tabs">
@@ -62,9 +61,7 @@ const UserProfile = () => {
             {loading && (
               <Loader width={"177px"} height={"177px"} strokeWidth={8} />
             )}
-            {!loading && (
-              <PostCard dataToShow={userPosts} active={active} />
-            )}
+            {!loading && <PostCard dataToShow={userPosts} active={active} />}
           </div>
         </div>
         <div className="user-profile-right-side">
@@ -74,7 +71,6 @@ const UserProfile = () => {
           {!fakeLoading && <UserProfileCard isUser={isUser} data={user} />}
         </div>
       </div>
-      {/* )} */}
     </>
   );
 };

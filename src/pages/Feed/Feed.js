@@ -21,14 +21,18 @@ const Feed = () => {
     setFilteredData(
       allPosts?.filter(
         (post) =>
-        userInfo?.followers?.some((item) => item?.username === post?.username) ||
-        userInfo?.following?.some((item) => item?.username === post?.username) ||
-        userInfo?.username === post?.username
+          userInfo?.followers?.some(
+            (item) => item?.username === post?.username
+          ) ||
+          userInfo?.following?.some(
+            (item) => item?.username === post?.username
+          ) ||
+          userInfo?.username === post?.username
       )
     );
   }, [allPosts, userInfo]);
 
-  console.log(userInfo)
+  console.log(userInfo);
 
   return (
     <div className="feed">

@@ -32,3 +32,19 @@
   position: sticky;
   top: 12px;
 }
+
+
+@media only screen and (max-width: 720px) {
+  .user-profile {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+  .user-profile-right-side {
+    top: 0;
+  }
+  .user-profile-left-side {
+    width: 100%
+  }
+}

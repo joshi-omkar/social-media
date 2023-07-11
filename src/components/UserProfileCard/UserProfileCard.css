@@ -121,7 +121,7 @@
   gap: 4px;
 }
 
-.user-edit-img-container >div> img {
+.user-edit-img-container > div > img {
   width: 80px;
   height: 80px;
   border-radius: 100%;
@@ -143,16 +143,16 @@
   font-size: 0.9rem;
 }
 
-.user-edit-button-container{
+.user-edit-button-container {
   display: flex;
   gap: 20px;
 }
 
-.noshowmask{
+.noshowmask {
   display: none;
 }
 
-.showmask{
+.showmask {
   position: absolute;
   top: 0;
   left: 0;
@@ -163,4 +163,16 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
+}
+
+@media only screen and (max-width: 720px) {
+  .user-container {
+    width: 350px;
+  }
+  .user-edit-container {
+    width: 350px;
+  }
+  .user-edit-info-container > span > input {
+    width: 320px;
+  }
 }
