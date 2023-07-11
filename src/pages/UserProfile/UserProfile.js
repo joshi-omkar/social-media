@@ -48,7 +48,7 @@ const UserProfile = () => {
         username: user?.username,
       })
     );
-  }, [username]);
+  }, [user]);
 
   return (
     <>

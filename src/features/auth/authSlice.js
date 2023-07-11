@@ -77,13 +77,11 @@ const authSlice = createSlice({
     });
     builder.addCase(getBookmark.fulfilled, (state, { payload }) => {
       state.loading = false;
-      console.log(payload);
       state.bookmarks = payload;
     });
     builder.addCase(getBookmark.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      console.log(payload);
     });
     // add bookmark
     builder.addCase(addBookmark.pending, (state) => {});
@@ -104,9 +102,7 @@ const authSlice = createSlice({
     //remove bookmark
     builder.addCase(removeBookmark.pending, (state) => {});
     builder.addCase(removeBookmark.fulfilled, (state, { payload }) => {
-      console.log(payload);
       const user = { ...state.userInfo, bookmarks: payload.bookmarks };
-      console.log(user);
       state.userInfo = user;
       state.bookmarks = payload.bookmarks;
       localStorage.setItem("user", JSON.stringify(user));
@@ -180,7 +176,6 @@ const authSlice = createSlice({
       state.success = true;
       state.error = null;
       state.userInfo = payload;
-      console.log(payload)
       TostMessage("Data changed successfully!", "success");
     });
     builder.addCase(userEdit.rejected, (state, { payload }) => {

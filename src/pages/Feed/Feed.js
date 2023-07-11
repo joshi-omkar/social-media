@@ -31,9 +31,6 @@ const Feed = () => {
       )
     );
   }, [allPosts, userInfo]);
-
-  console.log(userInfo);
-
   return (
     <div className="feed">
       <CreatePost />
