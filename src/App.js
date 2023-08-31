@@ -12,9 +12,18 @@ import Explore from "./pages/Explore/Explore";
 import Bookmark from "./pages/Bookmark/Bookmark";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import IndividualPost from "./pages/IndividualPost/IndividualPost";
+import { Cloudinary } from "@cloudinary/url-gen";
+import {AdvancedImage} from '@cloudinary/react';
+import {fill} from "@cloudinary/url-gen/actions/resize";
 
 const App = () => {
   const { userToken } = useSelector((state) => state.auth);
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: "diudzga1m",
+    },
+  });
+  const myImage = cld.image('UploadedImages/'); 
   return (
     <div className="App">
       {userToken ? <NavBar /> : ""}
@@ -24,7 +33,7 @@ const App = () => {
           exact
           element={
             <RequireAuth>
-              <Feed/>
+              <Feed />
             </RequireAuth>
           }
         />
@@ -33,7 +42,7 @@ const App = () => {
           exact
           element={
             <RequireAuth>
-              <Explore/>
+              <Explore />
             </RequireAuth>
           }
         />
@@ -42,7 +51,7 @@ const App = () => {
           exact
           element={
             <RequireAuth>
-              <Bookmark/>
+              <Bookmark />
             </RequireAuth>
           }
         />
@@ -51,7 +60,7 @@ const App = () => {
           exact
           element={
             <RequireAuth>
-              <UserProfile/>
+              <UserProfile />
             </RequireAuth>
           }
         />
@@ -60,7 +69,7 @@ const App = () => {
           exact
           element={
             <RequireAuth>
-              <IndividualPost/>
+              <IndividualPost />
             </RequireAuth>
           }
         />

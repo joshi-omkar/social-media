@@ -206,7 +206,6 @@ export const Card = ({ data }) => {
           </div>
           <div className="left-side">
             <div className="card-user-details">
-              {/* <img src={data.picUrl} alt="profile" /> */}
               <span>
                 <p>Posted By </p>
                 <p
@@ -222,12 +221,11 @@ export const Card = ({ data }) => {
             <Link to={`/posts/${data?._id}`}>
               <div className="post-details">
                 <h3>{data?.content}</h3>
-                {/* <span>
-            {data.tags.map((tag, key) => {
-              return <div key={key}>{tag}</div>;
-            })}
-          </span> */}
-                {/* <p>{data.postDescription}</p> */}
+                <div className="post-img-container">
+                  {data?.media.length !== 0 && (
+                    <img className="postMedia" src={data?.media} alt={data?.content} />
+                  )}
+                </div>
               </div>
             </Link>
             <div

@@ -85,3 +85,20 @@
   height: 40px;
   border-radius: 100%;
 }
+
+.search-small-device{
+  display: none;
+}
+
+.search-container{
+  width: 500px;
+}
+
+@media only screen and (max-width: 720px) {
+  .search-small-device{
+    display: block;
+  }
+  .search-large-device{
+    display: none;
+  }
+}

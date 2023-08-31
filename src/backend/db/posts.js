@@ -15,7 +15,7 @@ export const posts = [
     username: "omkarjoshi",
     profileAvatar:
       "https://res.cloudinary.com/Pritesh1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
-    content: "I'm proud of my father.",
+    content: "Breaking Bad is GOAT!",
 
     likes: {
       likeCount: 4,
@@ -59,7 +59,7 @@ export const posts = [
     },
 
     media:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687949692/happy-father-s-day_24908-59789_gfee2v.avif",
+      "https://res.cloudinary.com/diudzga1m/image/upload/v1693458907/ulq8upvyhkff1oy3fsne.jpg",
     createdAt: "2023-05-11",
     updatedAt: "2023-05-11",
     comments: [
@@ -108,7 +108,7 @@ export const posts = [
       ],
     },
 
-    media: "Gaikwad",
+    media: "https://res.cloudinary.com/diudzga1m/image/upload/v1693459116/AP_Dhillon_performs_at_DEC_Arena_m61949_zajdeh.jpg",
     createdAt: "2023-06-12",
     updatedAt: "2023-06-12",
     comments: [
@@ -144,7 +144,7 @@ export const posts = [
     username: "omkarjoshi",
     profileAvatar:
       "https://res.cloudinary.com/Pritesh1905/image/upload/v1687716248/844-8444619_student-png-male-student-cartoon-png_ibwnbv.png",
-    content: `Be courageous. Challenge orthodoxy. Stand up for what you believe in. Make sure you have stories to cherish lifetime.`,
+    content: `Better Call Saul!!`,
     // link: "https://yo-shop-neogcamp.netlify.app/",
 
     likes: {
@@ -170,7 +170,7 @@ export const posts = [
       ],
     },
 
-    media: "Gaikwad",
+    media: "https://res.cloudinary.com/diudzga1m/image/upload/v1693458999/p13837077_b_v9_aa_r9xprx.jpg",
     createdAt: "2023-06-25",
     updatedAt: "2023-06-25",
     comments: [
@@ -207,7 +207,7 @@ export const posts = [
     username: "priteshjoshi",
     profileAvatar: "https://avatars.githubusercontent.com/u/94983216?v=4",
     content: "Why this kolaveri-Di ?",
-    media: "Gaikwad",
+    media: "",
     createdAt: "2023-06-21",
     updatedAt: "2023-06-21",
 
@@ -270,7 +270,7 @@ export const posts = [
     profileAvatar: "https://avatars.githubusercontent.com/u/94983216?v=4",
     content: "Visited kedarnath! Jai shiv ji !!",
     media:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687578017/91370194_gkqi4s.webp",
+      "https://res.cloudinary.com/diudzga1m/image/upload/v1693459192/GettyImages-539105384_kxjfzw.jpg",
     createdAt: "2023-04-21",
     updatedAt: "2023-04-21",
 
@@ -374,7 +374,7 @@ export const posts = [
       ],
     },
 
-    media: "Gaikwad",
+    media: "",
     createdAt: "2023-02-19",
     updatedAt: "2023-02-19",
     comments: [
@@ -434,7 +434,7 @@ export const posts = [
       ],
     },
 
-    media: "Gaikwad",
+    media: "",
     createdAt: "2023-06-04",
     updatedAt: "2023-06-04",
     comments: [
@@ -484,7 +484,7 @@ export const posts = [
     },
 
     media:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687949883/gym_management-min_z042yf.jpg",
+      "",
     createdAt: "2023-06-05",
     updatedAt: "2023-06-05",
     comments: [
@@ -561,7 +561,7 @@ export const posts = [
     },
 
     media:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687949942/ipl-2023-winner-chennai-super-kings-csk_nkwc6o.jpg",
+      "https://res.cloudinary.com/diudzga1m/image/upload/v1693459286/Cup05_bhkbc5.jpg",
     createdAt: "2023-06-17",
     updatedAt: "2023-06-17",
     comments: [
@@ -596,7 +596,7 @@ export const posts = [
     email: "omgaikwad@gmail.com",
     username: "omgaikwad",
     profileAvatar: "https://avatars.githubusercontent.com/u/36763315?v=4",
-    content: "New sensation",
+    content: "Sharayu! The River",
 
     likes: {
       likeCount: 3,
@@ -632,7 +632,7 @@ export const posts = [
     },
 
     media:
-      "https://res.cloudinary.com/Pritesh1905/image/upload/v1687950009/ap-dhillon-stock-1-min_bzihym.jpg",
+      "https://res.cloudinary.com/diudzga1m/image/upload/v1693459405/1200px-Sarayu_River_AJTJ_P1020789_fyd0iu.jpg",
     createdAt: "2023-06-09",
     updatedAt: "2023-06-09",
     comments: [

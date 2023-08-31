@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./CreatePost.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../features/Feed/FeedAction";
+import UploadImage from "../UploadImage/UploadImage";
 
 const CreatePost = () => {
   const { loading, allData, error, success } = useSelector(
@@ -60,8 +61,8 @@ const CreatePost = () => {
   }, []);
 
   return (
-    <div className="create-post">
-      <div style={{ width: "100%" }} ref={outSideClickRef}>
+    <div className="create-post" ref={outSideClickRef}>
+      <div className="input-containers">
         <input
           onClick={handleOnClick}
           style={!isOpen ? { display: "block" } : { display: "none" }}
@@ -72,7 +73,7 @@ const CreatePost = () => {
         <textarea
           style={
             isOpen
-              ? { display: "block", width: "50%", height: "60px" }
+              ? { display: "block"}
               : { display: "none" }
           }
           className="create-post-input-textarea"
@@ -84,24 +85,17 @@ const CreatePost = () => {
             setNewPostData({ content: e.target.value });
           }}
         />
-
-        {/* <p
-          style={
-            newPostData.content.length === 0
-              ? { display: "block", color: "#FF0000", marginTop: "4px" }
-              : { display: "none" }
-          }
-        >
-          {message}
-        </p> */}
       </div>
-      <button
-        disabled={newPostData.content.length === 0}
-        onClick={handlePost}
-        className="create-post-button"
-      >
-        Post
-      </button>
+      <div className="create-post-image-button-container" style={!isOpen ? { display: "none" } : { display: "flex" }}>
+        <UploadImage type={"user"} userToken={userToken} />
+        <button
+          disabled={newPostData.content.length === 0}
+          onClick={handlePost}
+          className="create-post-button"
+        >
+          Post
+        </button>
+      </div>
     </div>
   );
 };

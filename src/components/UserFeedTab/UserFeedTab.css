@@ -18,6 +18,7 @@
   border: 1px solid var(--button-color);
   border-radius: 4px;
   cursor: pointer;
+  
 }
 
 .userfeed-tab-new {
@@ -30,6 +31,7 @@
 
 .userfeed-tab-trending {
   background-color: var(--primary-bg-color);
+  transition: 0.2s;
 }
 
 .userfeed-tab-trending:hover {
